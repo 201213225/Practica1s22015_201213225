@@ -10,5 +10,8 @@ package Estructuras;
  * @author Denis
  */
 public class Nodo_Lista {
-    
+    Nodo_Lista sig;
+    Nodo_Lista ant;
+    void incertar(){
+    }
 }
