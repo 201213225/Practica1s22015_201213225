@@ -5,6 +5,8 @@
  */
 package practica1s22015_201213225;
 
+import Estructuras.Matriz;
+
 /**
  *
  * @author Denis
@@ -16,6 +18,9 @@ public class Practica1s22015_201213225 {
      */
     public static void main(String[] args) {
         // TODO code application logic here
+        Matriz a = new Matriz();
+        a.Incertar_Fila();
+        a.Incertar_Fila();
     }
     
 }
