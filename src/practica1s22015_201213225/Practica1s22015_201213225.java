@@ -21,6 +21,11 @@ public class Practica1s22015_201213225 {
         Matriz a = new Matriz();
         a.Incertar_Fila();
         a.Incertar_Fila();
+        a.Incertar_Fila();
+        a.Incertar_Fila();
+        a.Incerdar_Columna();
+        a.Incerdar_Columna();
+        a.Incerdar_Columna();
     }
     
 }

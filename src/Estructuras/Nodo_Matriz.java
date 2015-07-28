@@ -12,4 +12,10 @@ package Estructuras;
 public class Nodo_Matriz {
     Nodo_Matriz arriba, abajo,izquierda, derecha;
     int X,Y;
+
+    Nodo_Matriz(int X, int Y) {
+        this.X = X;
+        this.Y = Y;
+        System.out.println("X:" + X + " Y:" + Y);
+    }
 }
