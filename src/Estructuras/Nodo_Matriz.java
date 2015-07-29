@@ -10,8 +10,8 @@ package Estructuras;
  * @author Denis
  */
 public class Nodo_Matriz {
-    Nodo_Matriz arriba, abajo,izquierda, derecha;
-    int X,Y;
+    public Nodo_Matriz arriba, abajo,izquierda, derecha;
+    public int X,Y;
 
     Nodo_Matriz(int X, int Y) {
         this.X = X;

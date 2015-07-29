@@ -5,6 +5,7 @@
  */
 package practica1s22015_201213225;
 
+import Estructuras.Lista;
 import Estructuras.Matriz;
 
 /**
@@ -19,13 +20,19 @@ public class Practica1s22015_201213225 {
     public static void main(String[] args) {
         // TODO code application logic here
         Matriz a = new Matriz();
-        a.Incertar_Fila();
-        a.Incertar_Fila();
-        a.Incertar_Fila();
-        a.Incertar_Fila();
-        a.Incerdar_Columna();
-        a.Incerdar_Columna();
-        a.Incerdar_Columna();
+        Lista b = new Lista();
+        b.Incertar_Lista();
+        b.Incertar_Lista();
+        b.Incertar_Lista();
+        b.Incertar_Lista();
+        b.Incertar_Lista();
+        b.Incertar_Lista();
+        System.out.println(b.Extraer_FIFO().indice);
+        System.out.println(b.Extraer_FIFO().indice);
+        System.out.println(b.Extraer_FIFO().indice);
+        System.out.println(b.Extraer_LIFO().indice);
+        System.out.println(b.Extraer_LIFO().indice);
+        System.out.println(b.Extraer_LIFO().indice);
     }
     
 }

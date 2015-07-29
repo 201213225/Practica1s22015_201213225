@@ -11,7 +11,7 @@ package Estructuras;
  */
 public class Matriz {
 
-    Nodo_Matriz Raiz;
+    public Nodo_Matriz Raiz;
 
     public void Incertar_Fila() {
         if (Raiz == null) {

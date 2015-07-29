@@ -12,4 +12,8 @@ package Estructuras;
 public class Nodo_Lista {
     Nodo_Lista sig;
     Nodo_Lista ant;
+    public int indice;
+    Nodo_Lista(int indice) {
+        this.indice = indice;
+    }
 }
