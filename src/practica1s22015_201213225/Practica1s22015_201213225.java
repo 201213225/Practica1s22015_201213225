@@ -21,18 +21,20 @@ public class Practica1s22015_201213225 {
         // TODO code application logic here
         Matriz a = new Matriz();
         Lista b = new Lista();
-        b.Incertar_Lista();
-        b.Incertar_Lista();
-        b.Incertar_Lista();
-        b.Incertar_Lista();
-        b.Incertar_Lista();
-        b.Incertar_Lista();
-        System.out.println(b.Extraer_FIFO().indice);
-        System.out.println(b.Extraer_FIFO().indice);
-        System.out.println(b.Extraer_FIFO().indice);
-        System.out.println(b.Extraer_LIFO().indice);
-        System.out.println(b.Extraer_LIFO().indice);
-        System.out.println(b.Extraer_LIFO().indice);
+        /*
+         b.Incertar_Lista();
+         b.Incertar_Lista();
+         b.Incertar_Lista();
+         b.Incertar_Lista();
+         b.Incertar_Lista();
+         b.Incertar_Lista();
+         System.out.println(b.Extraer_FIFO().indice);
+         System.out.println(b.Extraer_FIFO().indice);
+         System.out.println(b.Extraer_FIFO().indice);
+         System.out.println(b.Extraer_LIFO().indice);
+         System.out.println(b.Extraer_LIFO().indice);
+         System.out.println(b.Extraer_LIFO().indice);
+         */
     }
-    
+
 }

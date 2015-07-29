@@ -12,7 +12,8 @@ package Estructuras;
 public class Lista {
 
     Nodo_Lista Raiz;
-    int indice=0;
+    int indice = 0;
+
     public void Incertar_Lista() {
         if (Raiz == null) {
             Raiz = new Nodo_Lista(indice);
@@ -27,31 +28,31 @@ public class Lista {
             aux.sig.ant = aux;
         }
     }
-    
-    public Nodo_Lista Extraer_FIFO(){
+
+    public Nodo_Lista Extraer_FIFO() {
         Nodo_Lista aux = null;
-        if(Raiz!= null){
+        if (Raiz != null) {
             aux = Raiz;
-            if (Raiz.sig != null){
+            if (Raiz.sig != null) {
                 Raiz = Raiz.sig;
                 Raiz.ant = null;
-            }else{
+            } else {
                 Raiz = null;
             }
         }
         return aux;
     }
-    
-    public Nodo_Lista Extraer_LIFO(){
+
+    public Nodo_Lista Extraer_LIFO() {
         Nodo_Lista aux = null;
-        if(Raiz!= null){
+        if (Raiz != null) {
             aux = Raiz;
-            if(Raiz.sig!=null){
-                while(aux.sig!=null){
-                    aux=aux.sig;
+            if (Raiz.sig != null) {
+                while (aux.sig != null) {
+                    aux = aux.sig;
                 }
-                aux.ant.sig= null;
-            }else{
+                aux.ant.sig = null;
+            } else {
                 Raiz = null;
             }
         }
