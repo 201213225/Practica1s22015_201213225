@@ -6,6 +6,7 @@
 package Interfaz;
 
 import Estructuras.Lista;
+import javax.swing.ImageIcon;
 
 /**
  *
@@ -19,6 +20,7 @@ public class Interfaz_Carga extends javax.swing.JFrame {
     Lista Carga = new Lista();
     public Interfaz_Carga() {
         initComponents();
+        //this.LbImagen.setIcon(new ImageIcon(new ImageIcon("C:\\Users\\Denis\\Pictures\\Viñetas\\23.png").getImage().getScaledInstance(LbImagen.getHeight(), LbImagen.getWidth(), java.awt.Image.SCALE_SMOOTH)));
     }
 
     /**
@@ -30,35 +32,178 @@ public class Interfaz_Carga extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jComboBox1 = new javax.swing.JComboBox();
-        jTextField1 = new javax.swing.JTextField();
+        TxSuelo = new javax.swing.JTextField();
+        TxPared = new javax.swing.JTextField();
+        LbSuelo = new javax.swing.JLabel();
+        LbPared = new javax.swing.JLabel();
+        LbGoomba = new javax.swing.JLabel();
+        LbKoopa = new javax.swing.JLabel();
+        LbFicha = new javax.swing.JLabel();
+        LbVida = new javax.swing.JLabel();
+        LbPrincipal = new javax.swing.JLabel();
+        LbCastillo = new javax.swing.JLabel();
+        TxKoopa = new javax.swing.JTextField();
+        TxGoomba = new javax.swing.JTextField();
+        TxVida = new javax.swing.JTextField();
+        TxFicha = new javax.swing.JTextField();
+        TxCastillo = new javax.swing.JTextField();
+        TxPrincipal = new javax.swing.JTextField();
+        AddPared = new javax.swing.JButton();
+        AddSuelo = new javax.swing.JButton();
+        AddKoopa = new javax.swing.JButton();
+        AddGoomba = new javax.swing.JButton();
+        AddPrincipal = new javax.swing.JButton();
+        AddCastillo = new javax.swing.JButton();
+        AddVida = new javax.swing.JButton();
+        AddFicha = new javax.swing.JButton();
+        ImagenSuelo = new javax.swing.JLabel();
+        ImagenPared = new javax.swing.JLabel();
+        BuscarPared = new javax.swing.JButton();
+        BuscarSuelo = new javax.swing.JButton();
+        BuscarKoopa = new javax.swing.JButton();
+        BuscarGoomba = new javax.swing.JButton();
+        BuscarPrincipal = new javax.swing.JButton();
+        BuscarCastillo = new javax.swing.JButton();
+        BuscarVida = new javax.swing.JButton();
+        BuscarFicha = new javax.swing.JButton();
+        ImagenGoomba = new javax.swing.JLabel();
+        ImagenKoopa = new javax.swing.JLabel();
+        ImagenPrincipal = new javax.swing.JLabel();
+        ImagenCastillo = new javax.swing.JLabel();
+        ImagenVida = new javax.swing.JLabel();
+        ImagenFicha = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setMinimumSize(new java.awt.Dimension(767, 654));
+        getContentPane().setLayout(null);
+        getContentPane().add(TxSuelo);
+        TxSuelo.setBounds(160, 50, 210, 20);
+        getContentPane().add(TxPared);
+        TxPared.setBounds(160, 120, 210, 20);
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        LbSuelo.setText("Suelo");
+        getContentPane().add(LbSuelo);
+        LbSuelo.setBounds(40, 50, 50, 14);
 
-        jTextField1.setText("jTextField1");
+        LbPared.setText("Pared");
+        getContentPane().add(LbPared);
+        LbPared.setBounds(40, 120, 50, 14);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(260, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(50, 50, 50)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(282, Short.MAX_VALUE))
-        );
+        LbGoomba.setText("Goomba");
+        getContentPane().add(LbGoomba);
+        LbGoomba.setBounds(40, 190, 50, 14);
+
+        LbKoopa.setText("Koopa");
+        getContentPane().add(LbKoopa);
+        LbKoopa.setBounds(40, 260, 50, 14);
+
+        LbFicha.setText("Ficha");
+        getContentPane().add(LbFicha);
+        LbFicha.setBounds(40, 330, 50, 14);
+
+        LbVida.setText("Hongo Vida");
+        getContentPane().add(LbVida);
+        LbVida.setBounds(40, 400, 70, 14);
+
+        LbPrincipal.setText("Personaje Principal");
+        getContentPane().add(LbPrincipal);
+        LbPrincipal.setBounds(40, 470, 120, 14);
+
+        LbCastillo.setText("Castillo Final");
+        getContentPane().add(LbCastillo);
+        LbCastillo.setBounds(40, 540, 80, 14);
+        getContentPane().add(TxKoopa);
+        TxKoopa.setBounds(160, 260, 210, 20);
+        getContentPane().add(TxGoomba);
+        TxGoomba.setBounds(160, 190, 210, 20);
+        getContentPane().add(TxVida);
+        TxVida.setBounds(160, 400, 210, 20);
+        getContentPane().add(TxFicha);
+        TxFicha.setBounds(160, 330, 210, 20);
+        getContentPane().add(TxCastillo);
+        TxCastillo.setBounds(160, 540, 210, 20);
+        getContentPane().add(TxPrincipal);
+        TxPrincipal.setBounds(160, 470, 210, 20);
+
+        AddPared.setText("ADD");
+        getContentPane().add(AddPared);
+        AddPared.setBounds(670, 120, 73, 23);
+
+        AddSuelo.setText("ADD");
+        getContentPane().add(AddSuelo);
+        AddSuelo.setBounds(670, 50, 73, 23);
+
+        AddKoopa.setText("ADD");
+        getContentPane().add(AddKoopa);
+        AddKoopa.setBounds(670, 260, 73, 23);
+
+        AddGoomba.setText("ADD");
+        getContentPane().add(AddGoomba);
+        AddGoomba.setBounds(670, 190, 73, 23);
+
+        AddPrincipal.setText("ADD");
+        getContentPane().add(AddPrincipal);
+        AddPrincipal.setBounds(670, 470, 73, 23);
+
+        AddCastillo.setText("ADD");
+        getContentPane().add(AddCastillo);
+        AddCastillo.setBounds(670, 540, 73, 23);
+
+        AddVida.setText("ADD");
+        getContentPane().add(AddVida);
+        AddVida.setBounds(670, 400, 73, 23);
+
+        AddFicha.setText("ADD");
+        getContentPane().add(AddFicha);
+        AddFicha.setBounds(670, 330, 73, 23);
+        getContentPane().add(ImagenSuelo);
+        ImagenSuelo.setBounds(430, 30, 60, 60);
+        getContentPane().add(ImagenPared);
+        ImagenPared.setBounds(430, 100, 60, 60);
+
+        BuscarPared.setText("Buscar Imagen");
+        getContentPane().add(BuscarPared);
+        BuscarPared.setBounds(550, 120, 120, 23);
+
+        BuscarSuelo.setText("Buscar Imagen");
+        getContentPane().add(BuscarSuelo);
+        BuscarSuelo.setBounds(550, 50, 120, 23);
+
+        BuscarKoopa.setText("Buscar Imagen");
+        getContentPane().add(BuscarKoopa);
+        BuscarKoopa.setBounds(550, 260, 120, 23);
+
+        BuscarGoomba.setText("Buscar Imagen");
+        getContentPane().add(BuscarGoomba);
+        BuscarGoomba.setBounds(550, 190, 120, 23);
+
+        BuscarPrincipal.setText("Buscar Imagen");
+        getContentPane().add(BuscarPrincipal);
+        BuscarPrincipal.setBounds(550, 470, 120, 23);
+
+        BuscarCastillo.setText("Buscar Imagen");
+        getContentPane().add(BuscarCastillo);
+        BuscarCastillo.setBounds(550, 540, 120, 23);
+
+        BuscarVida.setText("Buscar Imagen");
+        getContentPane().add(BuscarVida);
+        BuscarVida.setBounds(550, 400, 120, 23);
+
+        BuscarFicha.setText("Buscar Imagen");
+        getContentPane().add(BuscarFicha);
+        BuscarFicha.setBounds(550, 330, 120, 23);
+        getContentPane().add(ImagenGoomba);
+        ImagenGoomba.setBounds(430, 170, 60, 60);
+        getContentPane().add(ImagenKoopa);
+        ImagenKoopa.setBounds(430, 240, 60, 60);
+        getContentPane().add(ImagenPrincipal);
+        ImagenPrincipal.setBounds(430, 450, 60, 60);
+        getContentPane().add(ImagenCastillo);
+        ImagenCastillo.setBounds(430, 520, 60, 60);
+        getContentPane().add(ImagenVida);
+        ImagenVida.setBounds(430, 380, 60, 60);
+        getContentPane().add(ImagenFicha);
+        ImagenFicha.setBounds(430, 310, 60, 60);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -99,7 +244,45 @@ public class Interfaz_Carga extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JComboBox jComboBox1;
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JButton AddCastillo;
+    private javax.swing.JButton AddFicha;
+    private javax.swing.JButton AddGoomba;
+    private javax.swing.JButton AddKoopa;
+    private javax.swing.JButton AddPared;
+    private javax.swing.JButton AddPrincipal;
+    private javax.swing.JButton AddSuelo;
+    private javax.swing.JButton AddVida;
+    private javax.swing.JButton BuscarCastillo;
+    private javax.swing.JButton BuscarFicha;
+    private javax.swing.JButton BuscarGoomba;
+    private javax.swing.JButton BuscarKoopa;
+    private javax.swing.JButton BuscarPared;
+    private javax.swing.JButton BuscarPrincipal;
+    private javax.swing.JButton BuscarSuelo;
+    private javax.swing.JButton BuscarVida;
+    private javax.swing.JLabel ImagenCastillo;
+    private javax.swing.JLabel ImagenFicha;
+    private javax.swing.JLabel ImagenGoomba;
+    private javax.swing.JLabel ImagenKoopa;
+    private javax.swing.JLabel ImagenPared;
+    private javax.swing.JLabel ImagenPrincipal;
+    private javax.swing.JLabel ImagenSuelo;
+    private javax.swing.JLabel ImagenVida;
+    private javax.swing.JLabel LbCastillo;
+    private javax.swing.JLabel LbFicha;
+    private javax.swing.JLabel LbGoomba;
+    private javax.swing.JLabel LbKoopa;
+    private javax.swing.JLabel LbPared;
+    private javax.swing.JLabel LbPrincipal;
+    private javax.swing.JLabel LbSuelo;
+    private javax.swing.JLabel LbVida;
+    private javax.swing.JTextField TxCastillo;
+    private javax.swing.JTextField TxFicha;
+    private javax.swing.JTextField TxGoomba;
+    private javax.swing.JTextField TxKoopa;
+    private javax.swing.JTextField TxPared;
+    private javax.swing.JTextField TxPrincipal;
+    private javax.swing.JTextField TxSuelo;
+    private javax.swing.JTextField TxVida;
     // End of variables declaration//GEN-END:variables
 }

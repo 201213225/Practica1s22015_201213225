@@ -7,6 +7,7 @@ package practica1s22015_201213225;
 
 import Estructuras.Lista;
 import Estructuras.Matriz;
+import Interfaz.Interfaz_Carga;
 
 /**
  *
@@ -21,6 +22,8 @@ public class Practica1s22015_201213225 {
         // TODO code application logic here
         Matriz a = new Matriz();
         Lista b = new Lista();
+        Interfaz_Carga c = new Interfaz_Carga();
+        c.setVisible(true);
         /*
          b.Incertar_Lista();
          b.Incertar_Lista();
