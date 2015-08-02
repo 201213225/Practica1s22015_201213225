@@ -18,26 +18,13 @@ public class Practica1s22015_201213225 {
     /**
      * @param args the command line arguments
      */
+    public static Lista carga;
     public static void main(String[] args) {
         // TODO code application logic here
         Matriz a = new Matriz();
         Lista b = new Lista();
         Interfaz_Carga c = new Interfaz_Carga();
         c.setVisible(true);
-        /*
-         b.Incertar_Lista();
-         b.Incertar_Lista();
-         b.Incertar_Lista();
-         b.Incertar_Lista();
-         b.Incertar_Lista();
-         b.Incertar_Lista();
-         System.out.println(b.Extraer_FIFO().indice);
-         System.out.println(b.Extraer_FIFO().indice);
-         System.out.println(b.Extraer_FIFO().indice);
-         System.out.println(b.Extraer_LIFO().indice);
-         System.out.println(b.Extraer_LIFO().indice);
-         System.out.println(b.Extraer_LIFO().indice);
-         */
     }
 
 }

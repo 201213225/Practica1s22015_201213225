@@ -14,16 +14,17 @@ public class Lista {
     Nodo_Lista Raiz;
     int indice = 0;
 
-    public void Incertar_Lista() {
+    public void Incertar_Lista(String Nombre, String Tipo, String Ruta) {
+        Nodo_Lista Nuevo = new Nodo_Lista(indice,Nombre, Tipo, Ruta);
         if (Raiz == null) {
-            Raiz = new Nodo_Lista(indice);
+            Raiz = Nuevo;
             indice++;
         } else {
             Nodo_Lista aux = Raiz;
             while (aux.sig != null) {
                 aux = aux.sig;
             }
-            aux.sig = new Nodo_Lista(indice);
+            aux.sig = Nuevo;
             indice++;
             aux.sig.ant = aux;
         }

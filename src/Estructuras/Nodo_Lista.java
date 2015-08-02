@@ -5,6 +5,8 @@
  */
 package Estructuras;
 
+import javax.swing.ImageIcon;
+
 /**
  *
  * @author Denis
@@ -14,7 +16,7 @@ public class Nodo_Lista {
     Nodo_Lista ant;
     public int indice;
     public String nombre, tipo, ruta;
-    Nodo_Lista(int indice) {
+    Nodo_Lista(int indice, String nombre, String tipo, String Ruta) {
         this.indice = indice;
     }
 }

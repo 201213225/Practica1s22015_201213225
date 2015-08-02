@@ -6,7 +6,10 @@
 package Interfaz;
 
 import Estructuras.Lista;
+import java.io.File;
 import javax.swing.ImageIcon;
+import javax.swing.JFileChooser;
+import javax.swing.filechooser.FileNameExtensionFilter;
 
 /**
  *
@@ -18,6 +21,8 @@ public class Interfaz_Carga extends javax.swing.JFrame {
      * Creates new form Interfaz_Carga
      */
     Lista Carga = new Lista();
+    int castillo = 0, principal = 0, pared = 0, suelo = 0, goomba = 0, koopa = 0, ficha = 0, vida = 0;
+
     public Interfaz_Carga() {
         initComponents();
         //this.LbImagen.setIcon(new ImageIcon(new ImageIcon("C:\\Users\\Denis\\Pictures\\Viñetas\\23.png").getImage().getScaledInstance(LbImagen.getHeight(), LbImagen.getWidth(), java.awt.Image.SCALE_SMOOTH)));
@@ -72,14 +77,33 @@ public class Interfaz_Carga extends javax.swing.JFrame {
         ImagenCastillo = new javax.swing.JLabel();
         ImagenVida = new javax.swing.JLabel();
         ImagenFicha = new javax.swing.JLabel();
+        RutaSuelo = new javax.swing.JTextField();
+        RutaPared = new javax.swing.JTextField();
+        RutaKoopa = new javax.swing.JTextField();
+        RutaGoomba = new javax.swing.JTextField();
+        RutaVida = new javax.swing.JTextField();
+        RutaFicha = new javax.swing.JTextField();
+        RutaCastillo = new javax.swing.JTextField();
+        RutaPrincipal = new javax.swing.JTextField();
+        LbRutas = new javax.swing.JLabel();
+        LbNombres = new javax.swing.JLabel();
+        BtNext = new javax.swing.JButton();
+        NumCastillo = new javax.swing.JLabel();
+        NumSuelo = new javax.swing.JLabel();
+        NumPared = new javax.swing.JLabel();
+        NumGoomba = new javax.swing.JLabel();
+        NumKoopa = new javax.swing.JLabel();
+        NumFicha = new javax.swing.JLabel();
+        NumVida = new javax.swing.JLabel();
+        NumPrincipal = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMinimumSize(new java.awt.Dimension(767, 654));
+        setMinimumSize(new java.awt.Dimension(810, 654));
         getContentPane().setLayout(null);
         getContentPane().add(TxSuelo);
-        TxSuelo.setBounds(160, 50, 210, 20);
+        TxSuelo.setBounds(160, 50, 130, 20);
         getContentPane().add(TxPared);
-        TxPared.setBounds(160, 120, 210, 20);
+        TxPared.setBounds(160, 120, 130, 20);
 
         LbSuelo.setText("Suelo");
         getContentPane().add(LbSuelo);
@@ -113,100 +137,385 @@ public class Interfaz_Carga extends javax.swing.JFrame {
         getContentPane().add(LbCastillo);
         LbCastillo.setBounds(40, 540, 80, 14);
         getContentPane().add(TxKoopa);
-        TxKoopa.setBounds(160, 260, 210, 20);
+        TxKoopa.setBounds(160, 260, 130, 20);
         getContentPane().add(TxGoomba);
-        TxGoomba.setBounds(160, 190, 210, 20);
+        TxGoomba.setBounds(160, 190, 130, 20);
         getContentPane().add(TxVida);
-        TxVida.setBounds(160, 400, 210, 20);
+        TxVida.setBounds(160, 400, 130, 20);
         getContentPane().add(TxFicha);
-        TxFicha.setBounds(160, 330, 210, 20);
+        TxFicha.setBounds(160, 330, 130, 20);
         getContentPane().add(TxCastillo);
-        TxCastillo.setBounds(160, 540, 210, 20);
+        TxCastillo.setBounds(160, 540, 130, 20);
         getContentPane().add(TxPrincipal);
-        TxPrincipal.setBounds(160, 470, 210, 20);
+        TxPrincipal.setBounds(160, 470, 130, 20);
 
         AddPared.setText("ADD");
+        AddPared.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AddParedActionPerformed(evt);
+            }
+        });
         getContentPane().add(AddPared);
-        AddPared.setBounds(670, 120, 73, 23);
+        AddPared.setBounds(710, 120, 73, 23);
 
         AddSuelo.setText("ADD");
+        AddSuelo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AddSueloActionPerformed(evt);
+            }
+        });
         getContentPane().add(AddSuelo);
-        AddSuelo.setBounds(670, 50, 73, 23);
+        AddSuelo.setBounds(710, 50, 73, 23);
 
         AddKoopa.setText("ADD");
+        AddKoopa.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AddKoopaActionPerformed(evt);
+            }
+        });
         getContentPane().add(AddKoopa);
-        AddKoopa.setBounds(670, 260, 73, 23);
+        AddKoopa.setBounds(710, 260, 73, 23);
 
         AddGoomba.setText("ADD");
+        AddGoomba.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AddGoombaActionPerformed(evt);
+            }
+        });
         getContentPane().add(AddGoomba);
-        AddGoomba.setBounds(670, 190, 73, 23);
+        AddGoomba.setBounds(710, 190, 73, 23);
 
         AddPrincipal.setText("ADD");
+        AddPrincipal.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AddPrincipalActionPerformed(evt);
+            }
+        });
         getContentPane().add(AddPrincipal);
-        AddPrincipal.setBounds(670, 470, 73, 23);
+        AddPrincipal.setBounds(710, 470, 73, 23);
 
         AddCastillo.setText("ADD");
+        AddCastillo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AddCastilloActionPerformed(evt);
+            }
+        });
         getContentPane().add(AddCastillo);
-        AddCastillo.setBounds(670, 540, 73, 23);
+        AddCastillo.setBounds(710, 540, 73, 23);
 
         AddVida.setText("ADD");
+        AddVida.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AddVidaActionPerformed(evt);
+            }
+        });
         getContentPane().add(AddVida);
-        AddVida.setBounds(670, 400, 73, 23);
+        AddVida.setBounds(710, 400, 73, 23);
 
         AddFicha.setText("ADD");
+        AddFicha.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AddFichaActionPerformed(evt);
+            }
+        });
         getContentPane().add(AddFicha);
-        AddFicha.setBounds(670, 330, 73, 23);
+        AddFicha.setBounds(710, 330, 73, 23);
         getContentPane().add(ImagenSuelo);
-        ImagenSuelo.setBounds(430, 30, 60, 60);
+        ImagenSuelo.setBounds(470, 30, 60, 60);
         getContentPane().add(ImagenPared);
-        ImagenPared.setBounds(430, 100, 60, 60);
+        ImagenPared.setBounds(470, 100, 60, 60);
 
         BuscarPared.setText("Buscar Imagen");
+        BuscarPared.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BuscarParedActionPerformed(evt);
+            }
+        });
         getContentPane().add(BuscarPared);
-        BuscarPared.setBounds(550, 120, 120, 23);
+        BuscarPared.setBounds(590, 120, 120, 23);
 
         BuscarSuelo.setText("Buscar Imagen");
+        BuscarSuelo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BuscarSueloActionPerformed(evt);
+            }
+        });
         getContentPane().add(BuscarSuelo);
-        BuscarSuelo.setBounds(550, 50, 120, 23);
+        BuscarSuelo.setBounds(590, 50, 120, 23);
 
         BuscarKoopa.setText("Buscar Imagen");
+        BuscarKoopa.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BuscarKoopaActionPerformed(evt);
+            }
+        });
         getContentPane().add(BuscarKoopa);
-        BuscarKoopa.setBounds(550, 260, 120, 23);
+        BuscarKoopa.setBounds(590, 260, 120, 23);
 
         BuscarGoomba.setText("Buscar Imagen");
+        BuscarGoomba.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BuscarGoombaActionPerformed(evt);
+            }
+        });
         getContentPane().add(BuscarGoomba);
-        BuscarGoomba.setBounds(550, 190, 120, 23);
+        BuscarGoomba.setBounds(590, 190, 120, 23);
 
         BuscarPrincipal.setText("Buscar Imagen");
+        BuscarPrincipal.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BuscarPrincipalActionPerformed(evt);
+            }
+        });
         getContentPane().add(BuscarPrincipal);
-        BuscarPrincipal.setBounds(550, 470, 120, 23);
+        BuscarPrincipal.setBounds(590, 470, 120, 23);
 
         BuscarCastillo.setText("Buscar Imagen");
+        BuscarCastillo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BuscarCastilloActionPerformed(evt);
+            }
+        });
         getContentPane().add(BuscarCastillo);
-        BuscarCastillo.setBounds(550, 540, 120, 23);
+        BuscarCastillo.setBounds(590, 540, 120, 23);
 
         BuscarVida.setText("Buscar Imagen");
+        BuscarVida.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BuscarVidaActionPerformed(evt);
+            }
+        });
         getContentPane().add(BuscarVida);
-        BuscarVida.setBounds(550, 400, 120, 23);
+        BuscarVida.setBounds(590, 400, 120, 23);
 
         BuscarFicha.setText("Buscar Imagen");
+        BuscarFicha.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BuscarFichaActionPerformed(evt);
+            }
+        });
         getContentPane().add(BuscarFicha);
-        BuscarFicha.setBounds(550, 330, 120, 23);
+        BuscarFicha.setBounds(590, 330, 120, 23);
         getContentPane().add(ImagenGoomba);
-        ImagenGoomba.setBounds(430, 170, 60, 60);
+        ImagenGoomba.setBounds(470, 170, 60, 60);
         getContentPane().add(ImagenKoopa);
-        ImagenKoopa.setBounds(430, 240, 60, 60);
+        ImagenKoopa.setBounds(470, 240, 60, 60);
         getContentPane().add(ImagenPrincipal);
-        ImagenPrincipal.setBounds(430, 450, 60, 60);
+        ImagenPrincipal.setBounds(470, 450, 60, 60);
         getContentPane().add(ImagenCastillo);
-        ImagenCastillo.setBounds(430, 520, 60, 60);
+        ImagenCastillo.setBounds(470, 520, 60, 60);
         getContentPane().add(ImagenVida);
-        ImagenVida.setBounds(430, 380, 60, 60);
+        ImagenVida.setBounds(470, 380, 60, 60);
         getContentPane().add(ImagenFicha);
-        ImagenFicha.setBounds(430, 310, 60, 60);
+        ImagenFicha.setBounds(470, 310, 60, 60);
+
+        RutaSuelo.setEditable(false);
+        getContentPane().add(RutaSuelo);
+        RutaSuelo.setBounds(320, 50, 130, 20);
+
+        RutaPared.setEditable(false);
+        getContentPane().add(RutaPared);
+        RutaPared.setBounds(320, 120, 130, 20);
+
+        RutaKoopa.setEditable(false);
+        getContentPane().add(RutaKoopa);
+        RutaKoopa.setBounds(320, 260, 130, 20);
+
+        RutaGoomba.setEditable(false);
+        getContentPane().add(RutaGoomba);
+        RutaGoomba.setBounds(320, 190, 130, 20);
+
+        RutaVida.setEditable(false);
+        getContentPane().add(RutaVida);
+        RutaVida.setBounds(320, 400, 130, 20);
+
+        RutaFicha.setEditable(false);
+        getContentPane().add(RutaFicha);
+        RutaFicha.setBounds(320, 330, 130, 20);
+
+        RutaCastillo.setEditable(false);
+        getContentPane().add(RutaCastillo);
+        RutaCastillo.setBounds(320, 540, 130, 20);
+
+        RutaPrincipal.setEditable(false);
+        getContentPane().add(RutaPrincipal);
+        RutaPrincipal.setBounds(320, 470, 130, 20);
+
+        LbRutas.setText("Rutas");
+        getContentPane().add(LbRutas);
+        LbRutas.setBounds(320, 20, 130, 14);
+
+        LbNombres.setText("Nombres");
+        getContentPane().add(LbNombres);
+        LbNombres.setBounds(160, 20, 130, 14);
+
+        BtNext.setText("Next");
+        BtNext.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtNextActionPerformed(evt);
+            }
+        });
+        getContentPane().add(BtNext);
+        BtNext.setBounds(590, 20, 120, 23);
+
+        NumCastillo.setText("0");
+        getContentPane().add(NumCastillo);
+        NumCastillo.setBounds(550, 540, 30, 14);
+
+        NumSuelo.setText("0");
+        getContentPane().add(NumSuelo);
+        NumSuelo.setBounds(550, 50, 40, 20);
+
+        NumPared.setText("0");
+        getContentPane().add(NumPared);
+        NumPared.setBounds(550, 120, 40, 20);
+
+        NumGoomba.setText("0");
+        getContentPane().add(NumGoomba);
+        NumGoomba.setBounds(550, 190, 40, 14);
+
+        NumKoopa.setText("0");
+        getContentPane().add(NumKoopa);
+        NumKoopa.setBounds(550, 260, 40, 14);
+
+        NumFicha.setText("0");
+        getContentPane().add(NumFicha);
+        NumFicha.setBounds(550, 330, 40, 14);
+
+        NumVida.setText("0");
+        getContentPane().add(NumVida);
+        NumVida.setBounds(550, 400, 30, 14);
+
+        NumPrincipal.setText("0");
+        getContentPane().add(NumPrincipal);
+        NumPrincipal.setBounds(550, 470, 40, 14);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void BuscarSueloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BuscarSueloActionPerformed
+        //System.out.print(BuscarRuta());
+        String aux = BuscarRuta();
+        this.ImagenSuelo.setIcon(new ImageIcon(new ImageIcon(aux).getImage().getScaledInstance(ImagenSuelo.getHeight(), ImagenSuelo.getWidth(), java.awt.Image.SCALE_SMOOTH)));
+        this.RutaSuelo.setText(aux);
+    }//GEN-LAST:event_BuscarSueloActionPerformed
+
+    private void BuscarParedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BuscarParedActionPerformed
+        String aux = BuscarRuta();
+        this.ImagenPared.setIcon(new ImageIcon(new ImageIcon(aux).getImage().getScaledInstance(ImagenPared.getHeight(), ImagenPared.getWidth(), java.awt.Image.SCALE_SMOOTH)));
+        this.RutaPared.setText(aux);
+    }//GEN-LAST:event_BuscarParedActionPerformed
+
+    private void BuscarGoombaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BuscarGoombaActionPerformed
+        String aux = BuscarRuta();
+        this.ImagenGoomba.setIcon(new ImageIcon(new ImageIcon(aux).getImage().getScaledInstance(ImagenGoomba.getHeight(), ImagenGoomba.getWidth(), java.awt.Image.SCALE_SMOOTH)));
+        this.RutaGoomba.setText(aux);
+    }//GEN-LAST:event_BuscarGoombaActionPerformed
+
+    private void BuscarKoopaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BuscarKoopaActionPerformed
+        String aux = BuscarRuta();
+        this.ImagenKoopa.setIcon(new ImageIcon(new ImageIcon(aux).getImage().getScaledInstance(ImagenKoopa.getHeight(), ImagenKoopa.getWidth(), java.awt.Image.SCALE_SMOOTH)));
+        this.RutaKoopa.setText(aux);
+    }//GEN-LAST:event_BuscarKoopaActionPerformed
+
+    private void BuscarFichaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BuscarFichaActionPerformed
+        String aux = BuscarRuta();
+        this.ImagenFicha.setIcon(new ImageIcon(new ImageIcon(aux).getImage().getScaledInstance(ImagenFicha.getHeight(), ImagenFicha.getWidth(), java.awt.Image.SCALE_SMOOTH)));
+        this.RutaFicha.setText(aux);
+    }//GEN-LAST:event_BuscarFichaActionPerformed
+
+    private void BuscarVidaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BuscarVidaActionPerformed
+        String aux = BuscarRuta();
+        this.ImagenVida.setIcon(new ImageIcon(new ImageIcon(aux).getImage().getScaledInstance(ImagenVida.getHeight(), ImagenVida.getWidth(), java.awt.Image.SCALE_SMOOTH)));
+        this.RutaVida.setText(aux);
+    }//GEN-LAST:event_BuscarVidaActionPerformed
+
+    private void BuscarPrincipalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BuscarPrincipalActionPerformed
+        String aux = BuscarRuta();
+        this.ImagenPrincipal.setIcon(new ImageIcon(new ImageIcon(aux).getImage().getScaledInstance(ImagenPrincipal.getHeight(), ImagenPrincipal.getWidth(), java.awt.Image.SCALE_SMOOTH)));
+        this.RutaPrincipal.setText(aux);
+    }//GEN-LAST:event_BuscarPrincipalActionPerformed
+
+    private void BuscarCastilloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BuscarCastilloActionPerformed
+        String aux = BuscarRuta();
+        this.ImagenCastillo.setIcon(new ImageIcon(new ImageIcon(aux).getImage().getScaledInstance(ImagenCastillo.getHeight(), ImagenCastillo.getWidth(), java.awt.Image.SCALE_SMOOTH)));
+        this.RutaCastillo.setText(aux);
+    }//GEN-LAST:event_BuscarCastilloActionPerformed
+
+    private void AddSueloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddSueloActionPerformed
+        if (TxSuelo.getText().length() > 0 && RutaSuelo.getText().length() > 0) {
+            Carga.Incertar_Lista(TxSuelo.getText(), "Suelo", RutaSuelo.getText());
+            suelo++;
+            NumSuelo.setText(Integer.toString(suelo));
+        }
+    }//GEN-LAST:event_AddSueloActionPerformed
+
+    private void AddParedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddParedActionPerformed
+        if (TxPared.getText().length() > 0 && RutaPared.getText().length() > 0) {
+            Carga.Incertar_Lista(TxPared.getText(), "Pared", RutaPared.getText());
+            pared++;
+            NumPared.setText(Integer.toString(pared));
+        }
+    }//GEN-LAST:event_AddParedActionPerformed
+
+    private void AddGoombaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddGoombaActionPerformed
+        if (TxGoomba.getText().length() > 0 && RutaGoomba.getText().length() > 0) {
+            Carga.Incertar_Lista(TxGoomba.getText(), "Goomba", RutaGoomba.getText());
+            goomba++;
+            NumGoomba.setText(Integer.toString(goomba));
+        }
+    }//GEN-LAST:event_AddGoombaActionPerformed
+
+    private void AddKoopaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddKoopaActionPerformed
+        if (TxKoopa.getText().length() > 0 && RutaKoopa.getText().length() > 0) {
+            Carga.Incertar_Lista(TxKoopa.getText(), "Koopa", RutaKoopa.getText());
+            koopa++;
+            NumKoopa.setText(Integer.toString(koopa));
+        }
+    }//GEN-LAST:event_AddKoopaActionPerformed
+
+    private void AddFichaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddFichaActionPerformed
+        if (TxFicha.getText().length() > 0 && RutaFicha.getText().length() > 0) {
+            Carga.Incertar_Lista(TxFicha.getText(), "Ficha", RutaFicha.getText());
+            ficha++;
+            NumFicha.setText(Integer.toString(ficha));
+        }
+    }//GEN-LAST:event_AddFichaActionPerformed
+
+    private void AddVidaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddVidaActionPerformed
+        if (TxVida.getText().length() > 0 && RutaVida.getText().length() > 0) {
+            Carga.Incertar_Lista(TxVida.getText(), "Vida", RutaVida.getText());
+            vida++;
+            NumVida.setText(Integer.toString(vida));
+        }
+    }//GEN-LAST:event_AddVidaActionPerformed
+
+    private void AddPrincipalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddPrincipalActionPerformed
+        if (TxPrincipal.getText().length() > 0 && RutaPrincipal.getText().length() > 0) {
+            Carga.Incertar_Lista(TxPrincipal.getText(), "Principal", RutaPrincipal.getText());
+            //System.out.println("Agregado");
+            AddPrincipal.setEnabled(false);
+            principal++;
+            NumPrincipal.setText(Integer.toString(suelo));
+        }
+    }//GEN-LAST:event_AddPrincipalActionPerformed
+
+    private void AddCastilloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddCastilloActionPerformed
+        if (TxCastillo.getText().length() > 0 && RutaCastillo.getText().length() > 0) {
+            Carga.Incertar_Lista(TxCastillo.getText(), "Castillo", RutaCastillo.getText());
+            //System.out.println("Agregado");
+            AddCastillo.setEnabled(false);
+            castillo++;
+            NumCastillo.setText(Integer.toString(castillo));
+        }
+    }//GEN-LAST:event_AddCastilloActionPerformed
+
+    private void BtNextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtNextActionPerformed
+        if(castillo > 0 && principal > 0){
+            practica1s22015_201213225.Practica1s22015_201213225.carga = Carga;
+            
+        }
+    }//GEN-LAST:event_BtNextActionPerformed
 
     /**
      * @param args the command line arguments
@@ -243,6 +552,32 @@ public class Interfaz_Carga extends javax.swing.JFrame {
         });
     }
 
+    private String BuscarRuta() {
+        String aux = "";
+        String texto = "";
+
+        /**
+         * llamamos el metodo que permite cargar la ventana
+         */
+        try {
+            JFileChooser file = new JFileChooser();
+            file.setCurrentDirectory(new File("C:\\Users\\Denis\\Desktop"));
+            file.setFileFilter(new FileNameExtensionFilter("Imagenes", "jpg", "jpeg", "png"));
+            file.showOpenDialog(this);
+            /**
+             * abrimos el archivo seleccionado
+             */
+
+            File abre = file.getSelectedFile();
+
+            return abre.getPath();//El texto se almacena en el JTextArea
+        } catch (NullPointerException ex) {
+            return "";
+        }
+
+    }
+
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton AddCastillo;
     private javax.swing.JButton AddFicha;
@@ -252,6 +587,7 @@ public class Interfaz_Carga extends javax.swing.JFrame {
     private javax.swing.JButton AddPrincipal;
     private javax.swing.JButton AddSuelo;
     private javax.swing.JButton AddVida;
+    private javax.swing.JButton BtNext;
     private javax.swing.JButton BuscarCastillo;
     private javax.swing.JButton BuscarFicha;
     private javax.swing.JButton BuscarGoomba;
@@ -272,10 +608,28 @@ public class Interfaz_Carga extends javax.swing.JFrame {
     private javax.swing.JLabel LbFicha;
     private javax.swing.JLabel LbGoomba;
     private javax.swing.JLabel LbKoopa;
+    private javax.swing.JLabel LbNombres;
     private javax.swing.JLabel LbPared;
     private javax.swing.JLabel LbPrincipal;
+    private javax.swing.JLabel LbRutas;
     private javax.swing.JLabel LbSuelo;
     private javax.swing.JLabel LbVida;
+    private javax.swing.JLabel NumCastillo;
+    private javax.swing.JLabel NumFicha;
+    private javax.swing.JLabel NumGoomba;
+    private javax.swing.JLabel NumKoopa;
+    private javax.swing.JLabel NumPared;
+    private javax.swing.JLabel NumPrincipal;
+    private javax.swing.JLabel NumSuelo;
+    private javax.swing.JLabel NumVida;
+    private javax.swing.JTextField RutaCastillo;
+    private javax.swing.JTextField RutaFicha;
+    private javax.swing.JTextField RutaGoomba;
+    private javax.swing.JTextField RutaKoopa;
+    private javax.swing.JTextField RutaPared;
+    private javax.swing.JTextField RutaPrincipal;
+    private javax.swing.JTextField RutaSuelo;
+    private javax.swing.JTextField RutaVida;
     private javax.swing.JTextField TxCastillo;
     private javax.swing.JTextField TxFicha;
     private javax.swing.JTextField TxGoomba;
