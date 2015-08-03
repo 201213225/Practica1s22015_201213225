@@ -6,7 +6,6 @@
 package practica1s22015_201213225;
 
 import Estructuras.Lista;
-import Estructuras.Matriz;
 import Interfaz.Interfaz_Carga;
 
 /**
@@ -21,8 +20,8 @@ public class Practica1s22015_201213225 {
     public static Lista carga;
     public static void main(String[] args) {
         // TODO code application logic here
-        Matriz a = new Matriz();
-        Lista b = new Lista();
+        //Matriz a = new Matriz();
+        //Lista b = new Lista();
         Interfaz_Carga c = new Interfaz_Carga();
         c.setVisible(true);
     }

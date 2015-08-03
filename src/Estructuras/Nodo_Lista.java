@@ -18,5 +18,8 @@ public class Nodo_Lista {
     public String nombre, tipo, ruta;
     Nodo_Lista(int indice, String nombre, String tipo, String Ruta) {
         this.indice = indice;
+        this.nombre = nombre;
+        this.tipo = tipo;
+        this.ruta = ruta;
     }
 }

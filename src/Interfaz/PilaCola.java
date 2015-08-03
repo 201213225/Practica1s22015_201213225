@@ -5,6 +5,8 @@
  */
 package Interfaz;
 
+import Estructuras.Lista;
+
 /**
  *
  * @author Denis
@@ -14,8 +16,11 @@ public class PilaCola extends javax.swing.JFrame {
     /**
      * Creates new form PilaCola
      */
+    Lista Carga;
+    
     public PilaCola() {
         initComponents();
+        Carga = practica1s22015_201213225.Practica1s22015_201213225.carga;
     }
 
     /**
@@ -27,14 +32,19 @@ public class PilaCola extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jComboBox1 = new javax.swing.JComboBox();
-        jButton1 = new javax.swing.JButton();
+        CbSeleccionar = new javax.swing.JComboBox();
+        BtListar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Pila", "Cola" }));
+        CbSeleccionar.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Pila", "Cola" }));
 
-        jButton1.setText("jButton1");
+        BtListar.setText("Listar");
+        BtListar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtListarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -42,23 +52,41 @@ public class PilaCola extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(CbSeleccionar, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(54, 54, 54)
-                .addComponent(jButton1)
-                .addContainerGap(71, Short.MAX_VALUE))
+                .addComponent(BtListar)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1))
+                    .addComponent(CbSeleccionar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(BtListar))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void BtListarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtListarActionPerformed
+        if(Carga.Raiz != null){
+            Lista Enviar = new Lista();
+            if(this.CbSeleccionar.getSelectedItem().toString().equals("Pila")){
+                while(Carga.Raiz!=null){
+                    Enviar.Incertar_Lista(Carga.Extraer_LIFO());
+                    //System.out.println(Carga.Extraer_LIFO().nombre);
+                }
+            }else if(this.CbSeleccionar.getSelectedItem().toString().equals("Cola")){
+                while(Carga.Raiz!=null){
+                    Enviar.Incertar_Lista(Carga.Extraer_FIFO());
+                    //System.out.println(Carga.Extraer_FIFO().nombre);
+                }
+            }
+            Interfaz_Objetos nuevo = new Interfaz_Objetos(Enviar);
+        }
+    }//GEN-LAST:event_BtListarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -96,7 +124,7 @@ public class PilaCola extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JComboBox jComboBox1;
+    private javax.swing.JButton BtListar;
+    private javax.swing.JComboBox CbSeleccionar;
     // End of variables declaration//GEN-END:variables
 }

@@ -11,11 +11,26 @@ package Estructuras;
  */
 public class Lista {
 
-    Nodo_Lista Raiz;
+    public Nodo_Lista Raiz;
     int indice = 0;
 
     public void Incertar_Lista(String Nombre, String Tipo, String Ruta) {
-        Nodo_Lista Nuevo = new Nodo_Lista(indice,Nombre, Tipo, Ruta);
+        Nodo_Lista Nuevo = new Nodo_Lista(indice, Nombre, Tipo, Ruta);
+        if (Raiz == null) {
+            Raiz = Nuevo;
+            indice++;
+        } else {
+            Nodo_Lista aux = Raiz;
+            while (aux.sig != null) {
+                aux = aux.sig;
+            }
+            aux.sig = Nuevo;
+            indice++;
+            aux.sig.ant = aux;
+        }
+    }
+
+    public void Incertar_Lista(Nodo_Lista Nuevo) {
         if (Raiz == null) {
             Raiz = Nuevo;
             indice++;
@@ -36,6 +51,7 @@ public class Lista {
             aux = Raiz;
             if (Raiz.sig != null) {
                 Raiz = Raiz.sig;
+                Raiz.ant.sig = null;
                 Raiz.ant = null;
             } else {
                 Raiz = null;
@@ -53,6 +69,7 @@ public class Lista {
                     aux = aux.sig;
                 }
                 aux.ant.sig = null;
+                aux.ant = null;
             } else {
                 Raiz = null;
             }

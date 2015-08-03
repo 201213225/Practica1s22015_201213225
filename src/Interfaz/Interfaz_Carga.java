@@ -496,7 +496,7 @@ public class Interfaz_Carga extends javax.swing.JFrame {
             //System.out.println("Agregado");
             AddPrincipal.setEnabled(false);
             principal++;
-            NumPrincipal.setText(Integer.toString(suelo));
+            NumPrincipal.setText(Integer.toString(principal));
         }
     }//GEN-LAST:event_AddPrincipalActionPerformed
 
@@ -513,7 +513,9 @@ public class Interfaz_Carga extends javax.swing.JFrame {
     private void BtNextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtNextActionPerformed
         if(castillo > 0 && principal > 0){
             practica1s22015_201213225.Practica1s22015_201213225.carga = Carga;
-            
+            PilaCola ventana = new PilaCola();
+            ventana.setVisible(true);
+            this.setEnabled(false);
         }
     }//GEN-LAST:event_BtNextActionPerformed
 
