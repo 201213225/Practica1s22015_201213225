@@ -12,11 +12,11 @@ import javax.swing.ImageIcon;
  * @author Denis
  */
 public class Nodo_Lista {
-    Nodo_Lista sig;
-    Nodo_Lista ant;
+    public Nodo_Lista sig;
+    public Nodo_Lista ant;
     public int indice;
     public String nombre, tipo, ruta;
-    Nodo_Lista(int indice, String nombre, String tipo, String Ruta) {
+    Nodo_Lista(int indice, String nombre, String tipo, String ruta) {
         this.indice = indice;
         this.nombre = nombre;
         this.tipo = tipo;

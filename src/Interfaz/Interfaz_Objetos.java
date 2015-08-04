@@ -6,6 +6,8 @@
 package Interfaz;
 
 import Estructuras.Lista;
+import Estructuras.Nodo_Lista;
+import javax.swing.ImageIcon;
 
 /**
  *
@@ -17,13 +19,17 @@ public class Interfaz_Objetos extends javax.swing.JFrame {
      * Creates new form Interfaz_Objetos
      */
     Lista Objetos = null;
+    Nodo_Lista puntero;
+
     public Interfaz_Objetos() {
         initComponents();
     }
 
     public Interfaz_Objetos(Lista Enviar) {
-        Objetos = Enviar;
         initComponents();
+        Objetos = Enviar;
+        puntero = Objetos.Raiz;
+        Cargar_Objetos();
         //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
@@ -36,21 +42,367 @@ public class Interfaz_Objetos extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        BtUp = new javax.swing.JButton();
+        BtDown = new javax.swing.JButton();
+        NombreObj1 = new javax.swing.JTextField();
+        NombreObj2 = new javax.swing.JTextField();
+        NombreObj3 = new javax.swing.JTextField();
+        LbObj4 = new javax.swing.JLabel();
+        LbObj5 = new javax.swing.JLabel();
+        LbObj6 = new javax.swing.JLabel();
+        NombreObj4 = new javax.swing.JTextField();
+        NombreObj5 = new javax.swing.JTextField();
+        NombreObj6 = new javax.swing.JTextField();
+        LbObj1 = new javax.swing.JLabel();
+        LbObj2 = new javax.swing.JLabel();
+        LbObj3 = new javax.swing.JLabel();
+        EditObj2 = new javax.swing.JButton();
+        EditObj1 = new javax.swing.JButton();
+        EditObj4 = new javax.swing.JButton();
+        EditObj3 = new javax.swing.JButton();
+        EditObj6 = new javax.swing.JButton();
+        EditObj5 = new javax.swing.JButton();
+        ImgObj2 = new javax.swing.JLabel();
+        ImgObj1 = new javax.swing.JLabel();
+        ImgObj6 = new javax.swing.JLabel();
+        ImgObj3 = new javax.swing.JLabel();
+        ImgObj4 = new javax.swing.JLabel();
+        ImgObj5 = new javax.swing.JLabel();
+        ClearObj2 = new javax.swing.JButton();
+        ClearObj1 = new javax.swing.JButton();
+        ClearObj4 = new javax.swing.JButton();
+        ClearObj3 = new javax.swing.JButton();
+        ClearObj6 = new javax.swing.JButton();
+        ClearObj5 = new javax.swing.JButton();
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
-        );
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setMinimumSize(new java.awt.Dimension(600, 531));
+        getContentPane().setLayout(null);
+
+        BtUp.setText("Arriba");
+        BtUp.setEnabled(false);
+        BtUp.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtUpActionPerformed(evt);
+            }
+        });
+        getContentPane().add(BtUp);
+        BtUp.setBounds(490, 10, 90, 23);
+
+        BtDown.setText("Abajo");
+        BtDown.setEnabled(false);
+        BtDown.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtDownActionPerformed(evt);
+            }
+        });
+        getContentPane().add(BtDown);
+        BtDown.setBounds(490, 450, 90, 23);
+
+        NombreObj1.setEditable(false);
+        getContentPane().add(NombreObj1);
+        NombreObj1.setBounds(210, 50, 130, 20);
+
+        NombreObj2.setEditable(false);
+        getContentPane().add(NombreObj2);
+        NombreObj2.setBounds(210, 120, 130, 20);
+
+        NombreObj3.setEditable(false);
+        getContentPane().add(NombreObj3);
+        NombreObj3.setBounds(210, 190, 130, 20);
+
+        LbObj4.setText("------");
+        getContentPane().add(LbObj4);
+        LbObj4.setBounds(10, 260, 80, 14);
+
+        LbObj5.setText("------");
+        getContentPane().add(LbObj5);
+        LbObj5.setBounds(10, 330, 80, 14);
+
+        LbObj6.setText("------");
+        getContentPane().add(LbObj6);
+        LbObj6.setBounds(10, 400, 80, 14);
+
+        NombreObj4.setEditable(false);
+        getContentPane().add(NombreObj4);
+        NombreObj4.setBounds(210, 260, 130, 20);
+
+        NombreObj5.setEditable(false);
+        getContentPane().add(NombreObj5);
+        NombreObj5.setBounds(210, 330, 130, 20);
+
+        NombreObj6.setEditable(false);
+        getContentPane().add(NombreObj6);
+        NombreObj6.setBounds(210, 400, 130, 20);
+
+        LbObj1.setText("------");
+        getContentPane().add(LbObj1);
+        LbObj1.setBounds(10, 50, 80, 14);
+
+        LbObj2.setText("------");
+        getContentPane().add(LbObj2);
+        LbObj2.setBounds(10, 120, 80, 14);
+
+        LbObj3.setText("------");
+        getContentPane().add(LbObj3);
+        LbObj3.setBounds(10, 190, 80, 14);
+
+        EditObj2.setText("Editar");
+        EditObj2.setEnabled(false);
+        EditObj2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                EditObj2ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(EditObj2);
+        EditObj2.setBounds(370, 120, 110, 23);
+
+        EditObj1.setText("Editar");
+        EditObj1.setEnabled(false);
+        EditObj1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                EditObj1ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(EditObj1);
+        EditObj1.setBounds(370, 50, 110, 23);
+
+        EditObj4.setText("Editar");
+        EditObj4.setEnabled(false);
+        EditObj4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                EditObj4ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(EditObj4);
+        EditObj4.setBounds(370, 260, 110, 23);
+
+        EditObj3.setText("Editar");
+        EditObj3.setEnabled(false);
+        EditObj3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                EditObj3ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(EditObj3);
+        EditObj3.setBounds(370, 190, 110, 23);
+
+        EditObj6.setText("Editar");
+        EditObj6.setEnabled(false);
+        EditObj6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                EditObj6ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(EditObj6);
+        EditObj6.setBounds(370, 400, 110, 23);
+
+        EditObj5.setText("Editar");
+        EditObj5.setEnabled(false);
+        EditObj5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                EditObj5ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(EditObj5);
+        EditObj5.setBounds(370, 330, 110, 23);
+        getContentPane().add(ImgObj2);
+        ImgObj2.setBounds(120, 100, 60, 60);
+        getContentPane().add(ImgObj1);
+        ImgObj1.setBounds(120, 30, 60, 60);
+        getContentPane().add(ImgObj6);
+        ImgObj6.setBounds(120, 380, 60, 60);
+        getContentPane().add(ImgObj3);
+        ImgObj3.setBounds(120, 170, 60, 60);
+        getContentPane().add(ImgObj4);
+        ImgObj4.setBounds(120, 240, 60, 60);
+        getContentPane().add(ImgObj5);
+        ImgObj5.setBounds(120, 310, 60, 60);
+
+        ClearObj2.setText("Eliminar");
+        ClearObj2.setEnabled(false);
+        ClearObj2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ClearObj2ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(ClearObj2);
+        ClearObj2.setBounds(490, 120, 90, 23);
+
+        ClearObj1.setText("Eliminar");
+        ClearObj1.setEnabled(false);
+        ClearObj1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ClearObj1ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(ClearObj1);
+        ClearObj1.setBounds(490, 50, 90, 23);
+
+        ClearObj4.setText("Eliminar");
+        ClearObj4.setEnabled(false);
+        ClearObj4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ClearObj4ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(ClearObj4);
+        ClearObj4.setBounds(490, 260, 90, 23);
+
+        ClearObj3.setText("Eliminar");
+        ClearObj3.setEnabled(false);
+        ClearObj3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ClearObj3ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(ClearObj3);
+        ClearObj3.setBounds(490, 190, 90, 23);
+
+        ClearObj6.setText("Eliminar");
+        ClearObj6.setEnabled(false);
+        ClearObj6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ClearObj6ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(ClearObj6);
+        ClearObj6.setBounds(490, 400, 90, 23);
+
+        ClearObj5.setText("Eliminar");
+        ClearObj5.setEnabled(false);
+        ClearObj5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ClearObj5ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(ClearObj5);
+        ClearObj5.setBounds(490, 330, 90, 23);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void BtDownActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtDownActionPerformed
+        // TODO add your handling code here:
+        puntero = puntero.sig;
+        if(puntero.sig.sig.sig.sig.sig.sig==null){
+            BtDown.setEnabled(false);
+        }
+        BtUp.setEnabled(true);
+        Cargar_Objetos();
+    }//GEN-LAST:event_BtDownActionPerformed
+
+    private void BtUpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtUpActionPerformed
+        // TODO add your handling code here:
+        puntero = puntero.ant;
+        if(puntero.ant==null){
+            BtUp.setEnabled(false);
+        }
+        BtDown.setEnabled(true);
+        Cargar_Objetos();
+    }//GEN-LAST:event_BtUpActionPerformed
+
+    private void EditObj1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EditObj1ActionPerformed
+        if(EditObj1.getText().equals("Editar")){
+            EditObj1.setText("Finalizar");
+            NombreObj1.setEnabled(true);
+        }else{
+            EditObj1.setText("Editar");
+            NombreObj1.setEnabled(false);
+            puntero.nombre = NombreObj1.getText();
+            Cargar_Objetos();
+        }
+    }//GEN-LAST:event_EditObj1ActionPerformed
+
+    private void EditObj2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EditObj2ActionPerformed
+        if(EditObj2.getText().equals("Editar")){
+            EditObj2.setText("Finalizar");
+            NombreObj2.setEnabled(true);
+        }else{
+            EditObj2.setText("Editar");
+            NombreObj2.setEnabled(false);
+            puntero.sig.nombre = NombreObj2.getText();
+            Cargar_Objetos();
+        }
+    }//GEN-LAST:event_EditObj2ActionPerformed
+
+    private void EditObj3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EditObj3ActionPerformed
+        if(EditObj3.getText().equals("Editar")){
+            EditObj3.setText("Finalizar");
+            NombreObj3.setEnabled(true);
+        }else{
+            EditObj3.setText("Editar");
+            NombreObj3.setEnabled(false);
+            puntero.sig.sig.nombre = NombreObj3.getText();
+            Cargar_Objetos();
+        }
+    }//GEN-LAST:event_EditObj3ActionPerformed
+
+    private void EditObj4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EditObj4ActionPerformed
+        if(EditObj4.getText().equals("Editar")){
+            EditObj4.setText("Finalizar");
+            NombreObj4.setEnabled(true);
+        }else{
+            EditObj4.setText("Editar");
+            NombreObj4.setEnabled(false);
+            puntero.sig.sig.sig.nombre = NombreObj4.getText();
+            Cargar_Objetos();
+        }
+    }//GEN-LAST:event_EditObj4ActionPerformed
+
+    private void EditObj5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EditObj5ActionPerformed
+        if(EditObj5.getText().equals("Editar")){
+            EditObj5.setText("Finalizar");
+            NombreObj5.setEnabled(true);
+        }else{
+            EditObj5.setText("Editar");
+            NombreObj5.setEnabled(false);
+            puntero.sig.sig.sig.sig.nombre = NombreObj5.getText();
+            Cargar_Objetos();
+        }
+    }//GEN-LAST:event_EditObj5ActionPerformed
+
+    private void EditObj6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EditObj6ActionPerformed
+        if(EditObj6.getText().equals("Editar")){
+            EditObj6.setText("Finalizar");
+            NombreObj6.setEnabled(true);
+        }else{
+            EditObj6.setText("Editar");
+            NombreObj6.setEnabled(false);
+            puntero.sig.sig.sig.sig.sig.nombre = NombreObj6.getText();
+            Cargar_Objetos();
+        }
+    }//GEN-LAST:event_EditObj6ActionPerformed
+
+    private void ClearObj1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ClearObj1ActionPerformed
+        eliminar(puntero);
+        Cargar_Objetos();
+    }//GEN-LAST:event_ClearObj1ActionPerformed
+
+    private void ClearObj2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ClearObj2ActionPerformed
+        eliminar(puntero.sig);
+        Cargar_Objetos();
+    }//GEN-LAST:event_ClearObj2ActionPerformed
+
+    private void ClearObj3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ClearObj3ActionPerformed
+        eliminar(puntero.sig.sig);
+        Cargar_Objetos();
+    }//GEN-LAST:event_ClearObj3ActionPerformed
+
+    private void ClearObj4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ClearObj4ActionPerformed
+        eliminar(puntero.sig.sig.sig);
+        Cargar_Objetos();
+    }//GEN-LAST:event_ClearObj4ActionPerformed
+
+    private void ClearObj5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ClearObj5ActionPerformed
+        eliminar(puntero.sig.sig.sig.sig);
+        Cargar_Objetos();
+    }//GEN-LAST:event_ClearObj5ActionPerformed
+
+    private void ClearObj6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ClearObj6ActionPerformed
+        eliminar(puntero.sig.sig.sig.sig.sig);
+        Cargar_Objetos();
+    }//GEN-LAST:event_ClearObj6ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -88,5 +440,149 @@ public class Interfaz_Objetos extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton BtDown;
+    private javax.swing.JButton BtUp;
+    private javax.swing.JButton ClearObj1;
+    private javax.swing.JButton ClearObj2;
+    private javax.swing.JButton ClearObj3;
+    private javax.swing.JButton ClearObj4;
+    private javax.swing.JButton ClearObj5;
+    private javax.swing.JButton ClearObj6;
+    private javax.swing.JButton EditObj1;
+    private javax.swing.JButton EditObj2;
+    private javax.swing.JButton EditObj3;
+    private javax.swing.JButton EditObj4;
+    private javax.swing.JButton EditObj5;
+    private javax.swing.JButton EditObj6;
+    private javax.swing.JLabel ImgObj1;
+    private javax.swing.JLabel ImgObj2;
+    private javax.swing.JLabel ImgObj3;
+    private javax.swing.JLabel ImgObj4;
+    private javax.swing.JLabel ImgObj5;
+    private javax.swing.JLabel ImgObj6;
+    private javax.swing.JLabel LbObj1;
+    private javax.swing.JLabel LbObj2;
+    private javax.swing.JLabel LbObj3;
+    private javax.swing.JLabel LbObj4;
+    private javax.swing.JLabel LbObj5;
+    private javax.swing.JLabel LbObj6;
+    private javax.swing.JTextField NombreObj1;
+    private javax.swing.JTextField NombreObj2;
+    private javax.swing.JTextField NombreObj3;
+    private javax.swing.JTextField NombreObj4;
+    private javax.swing.JTextField NombreObj5;
+    private javax.swing.JTextField NombreObj6;
     // End of variables declaration//GEN-END:variables
+
+    private void Cargar_Objetos() {
+        reiniciar();
+        if (puntero != null) {
+            LbObj1.setText(puntero.tipo);
+            NombreObj1.setText(puntero.nombre);
+            EditObj1.setEnabled(true);
+            ClearObj1.setEnabled(true);
+            if(puntero.ant!=null){
+                BtUp.setEnabled(true);
+            }
+            //System.out.print(puntero.ruta);
+            this.ImgObj1.setIcon(new ImageIcon(new ImageIcon(puntero.ruta).getImage().getScaledInstance(ImgObj1.getHeight(), ImgObj1.getWidth(), java.awt.Image.SCALE_SMOOTH)));
+            if (puntero.sig != null) {
+                LbObj2.setText(puntero.sig.tipo);
+                NombreObj2.setText(puntero.sig.nombre);
+                EditObj2.setEnabled(true);
+                ClearObj2.setEnabled(true);
+                this.ImgObj2.setIcon(new ImageIcon(new ImageIcon(puntero.sig.ruta).getImage().getScaledInstance(ImgObj2.getHeight(), ImgObj2.getWidth(), java.awt.Image.SCALE_SMOOTH)));
+                if (puntero.sig.sig != null) {
+                    LbObj3.setText(puntero.sig.sig.tipo);
+                    NombreObj3.setText(puntero.sig.sig.nombre);
+                    EditObj3.setEnabled(true);
+                    ClearObj3.setEnabled(true);
+                    this.ImgObj3.setIcon(new ImageIcon(new ImageIcon(puntero.sig.sig.ruta).getImage().getScaledInstance(ImgObj3.getHeight(), ImgObj3.getWidth(), java.awt.Image.SCALE_SMOOTH)));
+                    if (puntero.sig.sig.sig != null) {
+                        LbObj4.setText(puntero.sig.sig.sig.tipo);
+                        NombreObj4.setText(puntero.sig.sig.sig.nombre);
+                        EditObj4.setEnabled(true);
+                        ClearObj4.setEnabled(true);
+                        this.ImgObj4.setIcon(new ImageIcon(new ImageIcon(puntero.sig.sig.sig.ruta).getImage().getScaledInstance(ImgObj4.getHeight(), ImgObj4.getWidth(), java.awt.Image.SCALE_SMOOTH)));
+                        if (puntero.sig.sig.sig.sig != null) {
+                            LbObj5.setText(puntero.sig.sig.sig.sig.tipo);
+                            NombreObj5.setText(puntero.sig.sig.sig.sig.nombre);
+                            EditObj5.setEnabled(true);
+                            ClearObj5.setEnabled(true);
+                            this.ImgObj5.setIcon(new ImageIcon(new ImageIcon(puntero.sig.sig.sig.sig.ruta).getImage().getScaledInstance(ImgObj5.getHeight(), ImgObj5.getWidth(), java.awt.Image.SCALE_SMOOTH)));
+                            if (puntero.sig.sig.sig.sig.sig != null) {
+                                LbObj6.setText(puntero.sig.sig.sig.sig.sig.tipo);
+                                NombreObj6.setText(puntero.sig.sig.sig.sig.sig.nombre);
+                                EditObj6.setEnabled(true);
+                                ClearObj6.setEnabled(true);
+                                this.ImgObj6.setIcon(new ImageIcon(new ImageIcon(puntero.sig.sig.sig.sig.sig.ruta).getImage().getScaledInstance(ImgObj6.getHeight(), ImgObj6.getWidth(), java.awt.Image.SCALE_SMOOTH)));
+                                if(puntero.sig.sig.sig.sig.sig.sig!=null){
+                                    BtDown.setEnabled(true);
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    private void eliminar(Nodo_Lista apuntador) {
+        if(apuntador.ant==null){
+            System.out.println("anterior es nulo");
+            if(apuntador.sig==null){
+                Objetos.Raiz=null;
+                puntero = null;
+            }else{
+                puntero=puntero.sig;
+                puntero.ant=null;
+            }
+        }else{
+            System.out.println("anterior no es nulo");
+            if(apuntador.sig==null){
+                apuntador=apuntador.ant;
+                apuntador.sig=null;
+            }else{
+                apuntador=apuntador.sig;
+                apuntador.ant=apuntador.ant.ant;
+                apuntador.ant.sig = apuntador;
+            }
+        }
+    }
+
+    private void reiniciar() {
+        LbObj1.setText("------");
+        LbObj2.setText("------");
+        LbObj3.setText("------");
+        LbObj4.setText("------");
+        LbObj5.setText("------");
+        LbObj6.setText("------");
+        NombreObj1.setText("");
+        NombreObj2.setText("");
+        NombreObj3.setText("");
+        NombreObj4.setText("");
+        NombreObj5.setText("");
+        NombreObj6.setText("");
+        EditObj1.setEnabled(false);
+        EditObj2.setEnabled(false);
+        EditObj3.setEnabled(false);
+        EditObj4.setEnabled(false);
+        EditObj5.setEnabled(false);
+        EditObj6.setEnabled(false);
+        ClearObj1.setEnabled(false);
+        ClearObj2.setEnabled(false);
+        ClearObj3.setEnabled(false);
+        ClearObj4.setEnabled(false);
+        ClearObj5.setEnabled(false);
+        ClearObj6.setEnabled(false);
+        ImgObj1.setIcon(null);
+        ImgObj2.setIcon(null);
+        ImgObj3.setIcon(null);
+        ImgObj4.setIcon(null);
+        ImgObj5.setIcon(null);
+        ImgObj6.setIcon(null);
+        BtUp.setEnabled(false);
+        BtDown.setEnabled(false);
+    }
+
 }
