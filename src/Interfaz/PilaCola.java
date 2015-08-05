@@ -85,6 +85,8 @@ public class PilaCola extends javax.swing.JFrame {
                 }
             }
             Interfaz_Objetos nuevo = new Interfaz_Objetos(Enviar);
+            nuevo.setVisible(true);
+            this.dispose();
         }
     }//GEN-LAST:event_BtListarActionPerformed
 

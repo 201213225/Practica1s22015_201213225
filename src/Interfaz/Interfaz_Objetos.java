@@ -305,10 +305,10 @@ public class Interfaz_Objetos extends javax.swing.JFrame {
     private void EditObj1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EditObj1ActionPerformed
         if(EditObj1.getText().equals("Editar")){
             EditObj1.setText("Finalizar");
-            NombreObj1.setEnabled(true);
+            NombreObj1.setEditable(true);
         }else{
             EditObj1.setText("Editar");
-            NombreObj1.setEnabled(false);
+            NombreObj1.setEditable(false);
             puntero.nombre = NombreObj1.getText();
             Cargar_Objetos();
         }
@@ -317,10 +317,10 @@ public class Interfaz_Objetos extends javax.swing.JFrame {
     private void EditObj2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EditObj2ActionPerformed
         if(EditObj2.getText().equals("Editar")){
             EditObj2.setText("Finalizar");
-            NombreObj2.setEnabled(true);
+            NombreObj2.setEditable(true);
         }else{
             EditObj2.setText("Editar");
-            NombreObj2.setEnabled(false);
+            NombreObj2.setEditable(false);
             puntero.sig.nombre = NombreObj2.getText();
             Cargar_Objetos();
         }
@@ -329,10 +329,10 @@ public class Interfaz_Objetos extends javax.swing.JFrame {
     private void EditObj3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EditObj3ActionPerformed
         if(EditObj3.getText().equals("Editar")){
             EditObj3.setText("Finalizar");
-            NombreObj3.setEnabled(true);
+            NombreObj3.setEditable(true);
         }else{
             EditObj3.setText("Editar");
-            NombreObj3.setEnabled(false);
+            NombreObj3.setEditable(false);
             puntero.sig.sig.nombre = NombreObj3.getText();
             Cargar_Objetos();
         }
@@ -341,10 +341,10 @@ public class Interfaz_Objetos extends javax.swing.JFrame {
     private void EditObj4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EditObj4ActionPerformed
         if(EditObj4.getText().equals("Editar")){
             EditObj4.setText("Finalizar");
-            NombreObj4.setEnabled(true);
+            NombreObj4.setEditable(true);
         }else{
             EditObj4.setText("Editar");
-            NombreObj4.setEnabled(false);
+            NombreObj4.setEditable(false);
             puntero.sig.sig.sig.nombre = NombreObj4.getText();
             Cargar_Objetos();
         }
@@ -353,10 +353,10 @@ public class Interfaz_Objetos extends javax.swing.JFrame {
     private void EditObj5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EditObj5ActionPerformed
         if(EditObj5.getText().equals("Editar")){
             EditObj5.setText("Finalizar");
-            NombreObj5.setEnabled(true);
+            NombreObj5.setEditable(true);
         }else{
             EditObj5.setText("Editar");
-            NombreObj5.setEnabled(false);
+            NombreObj5.setEditable(false);
             puntero.sig.sig.sig.sig.nombre = NombreObj5.getText();
             Cargar_Objetos();
         }
@@ -365,10 +365,10 @@ public class Interfaz_Objetos extends javax.swing.JFrame {
     private void EditObj6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EditObj6ActionPerformed
         if(EditObj6.getText().equals("Editar")){
             EditObj6.setText("Finalizar");
-            NombreObj6.setEnabled(true);
+            NombreObj6.setEditable(true);
         }else{
             EditObj6.setText("Editar");
-            NombreObj6.setEnabled(false);
+            NombreObj6.setEditable(false);
             puntero.sig.sig.sig.sig.sig.nombre = NombreObj6.getText();
             Cargar_Objetos();
         }
@@ -529,7 +529,7 @@ public class Interfaz_Objetos extends javax.swing.JFrame {
 
     private void eliminar(Nodo_Lista apuntador) {
         if(apuntador.ant==null){
-            System.out.println("anterior es nulo");
+            //System.out.println("anterior es nulo");
             if(apuntador.sig==null){
                 Objetos.Raiz=null;
                 puntero = null;
@@ -538,7 +538,7 @@ public class Interfaz_Objetos extends javax.swing.JFrame {
                 puntero.ant=null;
             }
         }else{
-            System.out.println("anterior no es nulo");
+            //System.out.println("anterior no es nulo");
             if(apuntador.sig==null){
                 apuntador=apuntador.ant;
                 apuntador.sig=null;
