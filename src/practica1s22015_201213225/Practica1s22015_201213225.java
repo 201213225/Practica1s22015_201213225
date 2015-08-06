@@ -19,24 +19,13 @@ public class Practica1s22015_201213225 {
      */
     public static Lista carga;
     public static void main(String[] args) {
-        // TODO code application logic here
-        //Matriz a = new Matriz();
-        //Lista b = new Lista();
+        
         Interfaz_Carga c = new Interfaz_Carga();
         c.setVisible(true);
-        /*Interfaz_Objetos d;
-        Lista e = new Lista();
-        e.Incertar_Lista("Goomba", "Goomba", "C:\\Users\\Denis\\Pictures\\Plushtrap.png");
-        e.Incertar_Lista("Koopa", "Koopa", "C:\\Users\\Denis\\Pictures\\11722263_729165757195353_3790519502923449454_o.png");
-        e.Incertar_Lista("Heroe", "Mario", "C:\\Users\\Denis\\Pictures\\183308.jpg");
-        e.Incertar_Lista("Castillo", "MinasTirith", "C:\\Users\\Denis\\Pictures\\wows-1b.jpg");
-        e.Incertar_Lista("Goomba", "Goomba", "C:\\Users\\Denis\\Pictures\\3.jpg");
-        e.Incertar_Lista("Koopa", "Koopa", "C:\\Users\\Denis\\Pictures\\11722263_729165757195353_3790519502923449454_o.png");
-        e.Incertar_Lista("Heroe", "Mario", "C:\\Users\\Denis\\Pictures\\3.jpg");
-        e.Incertar_Lista("Castillo", "MinasTirith", "C:\\Users\\Denis\\Pictures\\wows-1b.jpg");
-        d = new Interfaz_Objetos(e);
-        d.repaint();
-        d.setVisible(true);//*/
+        //Editor_Tablero d;
+        //d = new Editor_Tablero();
+        //d.setVisible(true);
+        //dot -Tpng boseto.dot -o boseto.png
     }
 
 }

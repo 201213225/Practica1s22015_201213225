@@ -222,9 +222,9 @@ public class Interfaz_Carga extends javax.swing.JFrame {
         getContentPane().add(AddFicha);
         AddFicha.setBounds(710, 330, 73, 23);
         getContentPane().add(ImagenSuelo);
-        ImagenSuelo.setBounds(470, 30, 60, 60);
+        ImagenSuelo.setBounds(490, 40, 30, 30);
         getContentPane().add(ImagenPared);
-        ImagenPared.setBounds(470, 100, 60, 60);
+        ImagenPared.setBounds(490, 110, 30, 30);
 
         BuscarPared.setText("Buscar Imagen");
         BuscarPared.addActionListener(new java.awt.event.ActionListener() {
@@ -298,17 +298,17 @@ public class Interfaz_Carga extends javax.swing.JFrame {
         getContentPane().add(BuscarFicha);
         BuscarFicha.setBounds(590, 330, 120, 23);
         getContentPane().add(ImagenGoomba);
-        ImagenGoomba.setBounds(470, 170, 60, 60);
+        ImagenGoomba.setBounds(490, 180, 30, 30);
         getContentPane().add(ImagenKoopa);
-        ImagenKoopa.setBounds(470, 240, 60, 60);
+        ImagenKoopa.setBounds(490, 250, 30, 30);
         getContentPane().add(ImagenPrincipal);
-        ImagenPrincipal.setBounds(470, 450, 60, 60);
+        ImagenPrincipal.setBounds(490, 460, 30, 30);
         getContentPane().add(ImagenCastillo);
-        ImagenCastillo.setBounds(470, 520, 60, 60);
+        ImagenCastillo.setBounds(490, 530, 30, 30);
         getContentPane().add(ImagenVida);
-        ImagenVida.setBounds(470, 380, 60, 60);
+        ImagenVida.setBounds(490, 390, 30, 30);
         getContentPane().add(ImagenFicha);
-        ImagenFicha.setBounds(470, 310, 60, 60);
+        ImagenFicha.setBounds(490, 320, 30, 30);
 
         RutaSuelo.setEditable(false);
         getContentPane().add(RutaSuelo);
@@ -646,42 +646,42 @@ public class Interfaz_Carga extends javax.swing.JFrame {
 
     private void PreCarga() {
         String aux = "C:\\Users\\Denis\\Pictures\\Iconos_Practica1\\Suelo.gif";
-        this.ImagenSuelo.setIcon(new ImageIcon(new ImageIcon(aux).getImage().getScaledInstance(ImagenSuelo.getHeight(), ImagenSuelo.getWidth(), java.awt.Image.SCALE_SMOOTH)));
+        this.ImagenSuelo.setIcon(new ImageIcon(aux));
         this.RutaSuelo.setText(aux);
         this.TxSuelo.setText("Suelo");
         
         aux = "C:\\Users\\Denis\\Pictures\\Iconos_Practica1\\Pared.gif";
-        this.ImagenPared.setIcon(new ImageIcon(new ImageIcon(aux).getImage().getScaledInstance(ImagenPared.getHeight(), ImagenPared.getWidth(), java.awt.Image.SCALE_SMOOTH)));
+        this.ImagenPared.setIcon(new ImageIcon(aux));
         this.RutaPared.setText(aux);
         this.TxPared.setText("Pared");
         
         aux = "C:\\Users\\Denis\\Pictures\\Iconos_Practica1\\Goomba.gif";
-        this.ImagenGoomba.setIcon(new ImageIcon(new ImageIcon(aux).getImage().getScaledInstance(ImagenGoomba.getHeight(), ImagenGoomba.getWidth(), java.awt.Image.SCALE_SMOOTH)));
+        this.ImagenGoomba.setIcon(new ImageIcon(aux));
         this.RutaGoomba.setText(aux);
         this.TxGoomba.setText("Goomba");
         
         aux = "C:\\Users\\Denis\\Pictures\\Iconos_Practica1\\Koopa.gif";
-        this.ImagenKoopa.setIcon(new ImageIcon(new ImageIcon(aux).getImage().getScaledInstance(ImagenKoopa.getHeight(), ImagenKoopa.getWidth(), java.awt.Image.SCALE_SMOOTH)));
+        this.ImagenKoopa.setIcon(new ImageIcon(aux));
         this.RutaKoopa.setText(aux);
         this.TxKoopa.setText("Koopa");
         
-        aux = "C:\\Users\\Denis\\Pictures\\Iconos_Practica1\\Ficha.png";
-        this.ImagenFicha.setIcon(new ImageIcon(new ImageIcon(aux).getImage().getScaledInstance(ImagenFicha.getHeight(), ImagenFicha.getWidth(), java.awt.Image.SCALE_SMOOTH)));
+        aux = "C:\\Users\\Denis\\Pictures\\Iconos_Practica1\\Ficha.jpg";
+        this.ImagenFicha.setIcon(new ImageIcon(aux));
         this.RutaFicha.setText(aux);
         this.TxFicha.setText("Ficha");
         
         aux = "C:\\Users\\Denis\\Pictures\\Iconos_Practica1\\Vida.gif";
-        this.ImagenVida.setIcon(new ImageIcon(new ImageIcon(aux).getImage().getScaledInstance(ImagenVida.getHeight(), ImagenVida.getWidth(), java.awt.Image.SCALE_SMOOTH)));
+        this.ImagenVida.setIcon(new ImageIcon(aux));
         this.RutaVida.setText(aux);
         this.TxVida.setText("Vida");
         
         aux = "C:\\Users\\Denis\\Pictures\\Iconos_Practica1\\Mario.gif";
-        this.ImagenPrincipal.setIcon(new ImageIcon(new ImageIcon(aux).getImage().getScaledInstance(ImagenPrincipal.getHeight(), ImagenPrincipal.getWidth(), java.awt.Image.SCALE_SMOOTH)));
+        this.ImagenPrincipal.setIcon(new ImageIcon(aux));
         this.RutaPrincipal.setText(aux);
         this.TxPrincipal.setText("Mario");
         
-        aux = "C:\\Users\\Denis\\Pictures\\Iconos_Practica1\\Castillo.gif";
-        this.ImagenCastillo.setIcon(new ImageIcon(new ImageIcon(aux).getImage().getScaledInstance(ImagenCastillo.getHeight(), ImagenCastillo.getWidth(), java.awt.Image.SCALE_SMOOTH)));
+        aux = "C:\\Users\\Denis\\Pictures\\Iconos_Practica1\\Castillo.jpg";
+        this.ImagenCastillo.setIcon(new ImageIcon(aux));
         this.RutaCastillo.setText(aux);
         this.TxCastillo.setText("Castillo");
     }

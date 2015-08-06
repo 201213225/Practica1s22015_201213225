@@ -74,6 +74,7 @@ public class Interfaz_Objetos extends javax.swing.JFrame {
         ClearObj3 = new javax.swing.JButton();
         ClearObj6 = new javax.swing.JButton();
         ClearObj5 = new javax.swing.JButton();
+        BtFinalizar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(600, 531));
@@ -207,17 +208,17 @@ public class Interfaz_Objetos extends javax.swing.JFrame {
         getContentPane().add(EditObj5);
         EditObj5.setBounds(370, 330, 110, 23);
         getContentPane().add(ImgObj2);
-        ImgObj2.setBounds(120, 100, 60, 60);
+        ImgObj2.setBounds(120, 110, 30, 30);
         getContentPane().add(ImgObj1);
-        ImgObj1.setBounds(120, 30, 60, 60);
+        ImgObj1.setBounds(120, 40, 30, 30);
         getContentPane().add(ImgObj6);
-        ImgObj6.setBounds(120, 380, 60, 60);
+        ImgObj6.setBounds(120, 390, 30, 30);
         getContentPane().add(ImgObj3);
-        ImgObj3.setBounds(120, 170, 60, 60);
+        ImgObj3.setBounds(120, 180, 30, 30);
         getContentPane().add(ImgObj4);
-        ImgObj4.setBounds(120, 240, 60, 60);
+        ImgObj4.setBounds(120, 250, 30, 30);
         getContentPane().add(ImgObj5);
-        ImgObj5.setBounds(120, 310, 60, 60);
+        ImgObj5.setBounds(120, 320, 30, 30);
 
         ClearObj2.setText("Eliminar");
         ClearObj2.setEnabled(false);
@@ -278,6 +279,15 @@ public class Interfaz_Objetos extends javax.swing.JFrame {
         });
         getContentPane().add(ClearObj5);
         ClearObj5.setBounds(490, 330, 90, 23);
+
+        BtFinalizar.setText("Finalizar");
+        BtFinalizar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtFinalizarActionPerformed(evt);
+            }
+        });
+        getContentPane().add(BtFinalizar);
+        BtFinalizar.setBounds(210, 450, 130, 23);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -404,6 +414,12 @@ public class Interfaz_Objetos extends javax.swing.JFrame {
         Cargar_Objetos();
     }//GEN-LAST:event_ClearObj6ActionPerformed
 
+    private void BtFinalizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtFinalizarActionPerformed
+        this.dispose();
+        Editor_Tablero Editor = new Editor_Tablero(Objetos);
+        Editor.setVisible(true);
+    }//GEN-LAST:event_BtFinalizarActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -441,6 +457,7 @@ public class Interfaz_Objetos extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BtDown;
+    private javax.swing.JButton BtFinalizar;
     private javax.swing.JButton BtUp;
     private javax.swing.JButton ClearObj1;
     private javax.swing.JButton ClearObj2;
@@ -485,37 +502,37 @@ public class Interfaz_Objetos extends javax.swing.JFrame {
                 BtUp.setEnabled(true);
             }
             //System.out.print(puntero.ruta);
-            this.ImgObj1.setIcon(new ImageIcon(new ImageIcon(puntero.ruta).getImage().getScaledInstance(ImgObj1.getHeight(), ImgObj1.getWidth(), java.awt.Image.SCALE_SMOOTH)));
+            this.ImgObj1.setIcon(new ImageIcon(puntero.ruta));
             if (puntero.sig != null) {
                 LbObj2.setText(puntero.sig.tipo);
                 NombreObj2.setText(puntero.sig.nombre);
                 EditObj2.setEnabled(true);
                 ClearObj2.setEnabled(true);
-                this.ImgObj2.setIcon(new ImageIcon(new ImageIcon(puntero.sig.ruta).getImage().getScaledInstance(ImgObj2.getHeight(), ImgObj2.getWidth(), java.awt.Image.SCALE_SMOOTH)));
+                this.ImgObj2.setIcon(new ImageIcon(puntero.sig.ruta));
                 if (puntero.sig.sig != null) {
                     LbObj3.setText(puntero.sig.sig.tipo);
                     NombreObj3.setText(puntero.sig.sig.nombre);
                     EditObj3.setEnabled(true);
                     ClearObj3.setEnabled(true);
-                    this.ImgObj3.setIcon(new ImageIcon(new ImageIcon(puntero.sig.sig.ruta).getImage().getScaledInstance(ImgObj3.getHeight(), ImgObj3.getWidth(), java.awt.Image.SCALE_SMOOTH)));
+                    this.ImgObj3.setIcon(new ImageIcon(puntero.sig.sig.ruta));
                     if (puntero.sig.sig.sig != null) {
                         LbObj4.setText(puntero.sig.sig.sig.tipo);
                         NombreObj4.setText(puntero.sig.sig.sig.nombre);
                         EditObj4.setEnabled(true);
                         ClearObj4.setEnabled(true);
-                        this.ImgObj4.setIcon(new ImageIcon(new ImageIcon(puntero.sig.sig.sig.ruta).getImage().getScaledInstance(ImgObj4.getHeight(), ImgObj4.getWidth(), java.awt.Image.SCALE_SMOOTH)));
+                        this.ImgObj4.setIcon(new ImageIcon(puntero.sig.sig.sig.ruta));
                         if (puntero.sig.sig.sig.sig != null) {
                             LbObj5.setText(puntero.sig.sig.sig.sig.tipo);
                             NombreObj5.setText(puntero.sig.sig.sig.sig.nombre);
                             EditObj5.setEnabled(true);
                             ClearObj5.setEnabled(true);
-                            this.ImgObj5.setIcon(new ImageIcon(new ImageIcon(puntero.sig.sig.sig.sig.ruta).getImage().getScaledInstance(ImgObj5.getHeight(), ImgObj5.getWidth(), java.awt.Image.SCALE_SMOOTH)));
+                            this.ImgObj5.setIcon(new ImageIcon(puntero.sig.sig.sig.sig.ruta));
                             if (puntero.sig.sig.sig.sig.sig != null) {
                                 LbObj6.setText(puntero.sig.sig.sig.sig.sig.tipo);
                                 NombreObj6.setText(puntero.sig.sig.sig.sig.sig.nombre);
                                 EditObj6.setEnabled(true);
                                 ClearObj6.setEnabled(true);
-                                this.ImgObj6.setIcon(new ImageIcon(new ImageIcon(puntero.sig.sig.sig.sig.sig.ruta).getImage().getScaledInstance(ImgObj6.getHeight(), ImgObj6.getWidth(), java.awt.Image.SCALE_SMOOTH)));
+                                this.ImgObj6.setIcon(new ImageIcon(puntero.sig.sig.sig.sig.sig.ruta));
                                 if(puntero.sig.sig.sig.sig.sig.sig!=null){
                                     BtDown.setEnabled(true);
                                 }
