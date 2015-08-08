@@ -5,17 +5,21 @@
  */
 package Estructuras;
 
+import javax.swing.JLabel;
+
 /**
  *
  * @author Denis
  */
-public class Nodo_Matriz {
+public class Nodo_Matriz extends JLabel {
     public Nodo_Matriz arriba, abajo,izquierda, derecha;
+    public Nodo_Lista Objeto;
     public int X,Y;
 
     Nodo_Matriz(int X, int Y) {
         this.X = X;
         this.Y = Y;
         System.out.println("X:" + X + " Y:" + Y);
+        this.setVisible(false);
     }
 }

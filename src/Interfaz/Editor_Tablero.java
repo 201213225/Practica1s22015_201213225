@@ -5,21 +5,27 @@
  */
 package Interfaz;
 
-import Estructuras.Lista;
-import Estructuras.Matriz;
-import Graphviz.Graphviz_Lista;
+import Estructuras.*;
+import Graphviz.Graphviz;
+import java.awt.Color;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+import javax.swing.ImageIcon;
+import javax.swing.border.LineBorder;
 
 /**
  *
  * @author Denis
  */
-public class Editor_Tablero extends javax.swing.JFrame {
+public class Editor_Tablero extends javax.swing.JFrame implements MouseListener {
 
     /**
      * Creates new form Editor_Tablero
      */
     Matriz Tablero;
     Lista Objetos;
+    Nodo_Matriz Puntero;
+
     public Editor_Tablero() {
         initComponents();
     }
@@ -28,6 +34,7 @@ public class Editor_Tablero extends javax.swing.JFrame {
         initComponents();
         Tablero = new Matriz();
         this.Objetos = Objetos;
+        Cargar();
     }
 
     /**
@@ -44,9 +51,13 @@ public class Editor_Tablero extends javax.swing.JFrame {
         BtGraficar = new javax.swing.JButton();
         BtEliminar = new javax.swing.JButton();
         BtDatos = new javax.swing.JButton();
-        jPanel1 = new javax.swing.JPanel();
+        Area = new javax.swing.JPanel();
+        jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
+        BtSelect = new javax.swing.JToggleButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setMinimumSize(new java.awt.Dimension(770, 490));
         getContentPane().setLayout(null);
 
         AddCol.setText("Agregar Columna");
@@ -94,34 +105,56 @@ public class Editor_Tablero extends javax.swing.JFrame {
         getContentPane().add(BtDatos);
         BtDatos.setBounds(162, 11, 61, 23);
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 710, Short.MAX_VALUE)
+        Area.setMinimumSize(new java.awt.Dimension(720, 360));
+        Area.setPreferredSize(new java.awt.Dimension(720, 360));
+
+        javax.swing.GroupLayout AreaLayout = new javax.swing.GroupLayout(Area);
+        Area.setLayout(AreaLayout);
+        AreaLayout.setHorizontalGroup(
+            AreaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 720, Short.MAX_VALUE)
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 310, Short.MAX_VALUE)
+        AreaLayout.setVerticalGroup(
+            AreaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 360, Short.MAX_VALUE)
         );
 
-        getContentPane().add(jPanel1);
-        jPanel1.setBounds(10, 40, 710, 310);
+        getContentPane().add(Area);
+        Area.setBounds(10, 40, 720, 360);
+
+        jButton1.setText(">");
+        jButton1.setEnabled(false);
+        getContentPane().add(jButton1);
+        jButton1.setBounds(690, 420, 41, 23);
+
+        jButton2.setText("<");
+        jButton2.setEnabled(false);
+        getContentPane().add(jButton2);
+        jButton2.setBounds(10, 420, 41, 23);
+
+        BtSelect.setLabel("");
+        BtSelect.setMaximumSize(new java.awt.Dimension(70, 70));
+        BtSelect.setMinimumSize(new java.awt.Dimension(30, 30));
+        BtSelect.setPreferredSize(new java.awt.Dimension(30, 30));
+        getContentPane().add(BtSelect);
+        BtSelect.setBounds(360, 400, 40, 40);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void AddColActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddColActionPerformed
         Tablero.Incerdar_Columna();
+        Pintar();
     }//GEN-LAST:event_AddColActionPerformed
 
     private void AddFilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddFilActionPerformed
         Tablero.Incertar_Fila();
+        Pintar();
     }//GEN-LAST:event_AddFilActionPerformed
 
     private void BtGraficarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtGraficarActionPerformed
-        Graphviz_Lista a = new Graphviz_Lista(Objetos);
-        
+        Graphviz a = new Graphviz(Objetos);
+
     }//GEN-LAST:event_BtGraficarActionPerformed
 
     private void BtEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtEliminarActionPerformed
@@ -170,9 +203,82 @@ public class Editor_Tablero extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton AddCol;
     private javax.swing.JButton AddFil;
+    private javax.swing.JPanel Area;
     private javax.swing.JButton BtDatos;
     private javax.swing.JButton BtEliminar;
     private javax.swing.JButton BtGraficar;
-    private javax.swing.JPanel jPanel1;
+    private javax.swing.JToggleButton BtSelect;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     // End of variables declaration//GEN-END:variables
+
+    private void Pintar() {
+        if (Puntero == null && Tablero.Raiz != null) {
+            Puntero = Tablero.Raiz;
+        }
+        if (Puntero != null) {
+            //System.out.println("Hola");
+            Nodo_Matriz Aux1 = Puntero;
+            while (Aux1 != null) {
+                System.out.println("Aux1");
+                Nodo_Matriz Aux2 = Aux1;
+                while (Aux2 != null) {
+                    System.out.println("Aux2");
+                    if (!Aux2.isVisible()) {
+                        System.out.println("No es visible");
+                        Area.add(Aux2);
+                        Aux2.setVisible(true);
+                        Aux2.setBounds(Aux2.X*30, Aux2.Y*30, 30, 30);
+                        //aux.setText("Hola");
+                        Aux2.setBorder(LineBorder.createGrayLineBorder());
+                        Aux2.setOpaque(true);
+                        Aux2.addMouseListener(this);
+                        //System.out.println(Color.);
+                        //float a = 0.6;
+                        Aux2.setBackground(Color.getHSBColor(0.63f,0.45f,1.0f));
+                    }
+                    Aux2 = Aux2.derecha;
+                }
+                Aux1 = Aux1.abajo;
+            }
+        }
+    }
+    private void Cargar() {
+        if(Objetos.Raiz!=null){
+            BtSelect.setIcon(new ImageIcon(Objetos.Raiz.ruta));
+        }else{
+            BtSelect.setIcon(null);
+            BtSelect.setEnabled(false);
+        }
+        BtSelect.setSelected(false);
+    }
+
+    @Override
+    public void mouseClicked(MouseEvent e) {
+        
+    }
+   @Override    public void mouseReleased(MouseEvent e) {
+        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void mouseEntered(MouseEvent e) {
+    }
+
+    @Override
+    public void mouseExited(MouseEvent e) {
+        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void mousePressed(MouseEvent e) {
+        if(BtSelect.isSelected()){
+            System.out.println("Hola");
+            System.out.println(e.getSource());
+            Nodo_Matriz Aux = (Nodo_Matriz) e.getComponent();
+            Aux.Objeto = Objetos.Extraer_FIFO();
+            Aux.setIcon(BtSelect.getIcon());
+            Cargar();
+        }
+    }
 }
