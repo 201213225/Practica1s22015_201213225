@@ -19,7 +19,7 @@ public class Nodo_Matriz extends JLabel {
     Nodo_Matriz(int X, int Y) {
         this.X = X;
         this.Y = Y;
-        System.out.println("X:" + X + " Y:" + Y);
+        //System.out.println("X:" + X + " Y:" + Y);
         this.setVisible(false);
     }
 }

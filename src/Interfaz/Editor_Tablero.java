@@ -8,6 +8,7 @@ package Interfaz;
 import Estructuras.*;
 import Graphviz.Graphviz;
 import java.awt.Color;
+import java.awt.Rectangle;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import javax.swing.ImageIcon;
@@ -25,6 +26,8 @@ public class Editor_Tablero extends javax.swing.JFrame implements MouseListener 
     Matriz Tablero;
     Lista Objetos;
     Nodo_Matriz Puntero;
+    int X = 0, Y = 0;//24,12
+    int corrimiento = 0;
 
     public Editor_Tablero() {
         initComponents();
@@ -52,8 +55,8 @@ public class Editor_Tablero extends javax.swing.JFrame implements MouseListener 
         BtEliminar = new javax.swing.JButton();
         BtDatos = new javax.swing.JButton();
         Area = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        LeftBt = new javax.swing.JButton();
+        RightBt = new javax.swing.JButton();
         BtSelect = new javax.swing.JToggleButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -122,39 +125,56 @@ public class Editor_Tablero extends javax.swing.JFrame implements MouseListener 
         getContentPane().add(Area);
         Area.setBounds(10, 40, 720, 360);
 
-        jButton1.setText(">");
-        jButton1.setEnabled(false);
-        getContentPane().add(jButton1);
-        jButton1.setBounds(690, 420, 41, 23);
+        LeftBt.setText(">");
+        LeftBt.setEnabled(false);
+        LeftBt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                LeftBtActionPerformed(evt);
+            }
+        });
+        getContentPane().add(LeftBt);
+        LeftBt.setBounds(690, 420, 41, 23);
 
-        jButton2.setText("<");
-        jButton2.setEnabled(false);
-        getContentPane().add(jButton2);
-        jButton2.setBounds(10, 420, 41, 23);
+        RightBt.setText("<");
+        RightBt.setEnabled(false);
+        RightBt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                RightBtActionPerformed(evt);
+            }
+        });
+        getContentPane().add(RightBt);
+        RightBt.setBounds(10, 420, 41, 23);
 
-        BtSelect.setLabel("");
         BtSelect.setMaximumSize(new java.awt.Dimension(70, 70));
         BtSelect.setMinimumSize(new java.awt.Dimension(30, 30));
         BtSelect.setPreferredSize(new java.awt.Dimension(30, 30));
         getContentPane().add(BtSelect);
-        BtSelect.setBounds(360, 400, 40, 40);
+        BtSelect.setBounds(360, 410, 40, 40);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void AddColActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddColActionPerformed
         Tablero.Incerdar_Columna();
+        X++;
         Pintar();
+        if (X > 24) {
+            AjustarBotones();
+        }
     }//GEN-LAST:event_AddColActionPerformed
 
     private void AddFilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddFilActionPerformed
+        if (Tablero.Raiz == null) {
+            X++;
+        }
         Tablero.Incertar_Fila();
+        Y++;
         Pintar();
     }//GEN-LAST:event_AddFilActionPerformed
 
     private void BtGraficarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtGraficarActionPerformed
         Graphviz a = new Graphviz(Objetos);
-
+        a = new Graphviz(Tablero);
     }//GEN-LAST:event_BtGraficarActionPerformed
 
     private void BtEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtEliminarActionPerformed
@@ -162,8 +182,23 @@ public class Editor_Tablero extends javax.swing.JFrame implements MouseListener 
     }//GEN-LAST:event_BtEliminarActionPerformed
 
     private void BtDatosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtDatosActionPerformed
-        // TODO add your handling code here:
+        
     }//GEN-LAST:event_BtDatosActionPerformed
+
+    private void LeftBtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LeftBtActionPerformed
+        // TODO add your handling code here:
+        corrimiento--;
+        Puntero = Puntero.derecha;
+        MoverDer();
+        AjustarBotones();
+    }//GEN-LAST:event_LeftBtActionPerformed
+
+    private void RightBtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RightBtActionPerformed
+        corrimiento++;
+        Puntero = Puntero.izquierda;
+        MoverIzq();
+        AjustarBotones();
+    }//GEN-LAST:event_RightBtActionPerformed
 
     /**
      * @param args the command line arguments
@@ -208,8 +243,8 @@ public class Editor_Tablero extends javax.swing.JFrame implements MouseListener 
     private javax.swing.JButton BtEliminar;
     private javax.swing.JButton BtGraficar;
     private javax.swing.JToggleButton BtSelect;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JButton LeftBt;
+    private javax.swing.JButton RightBt;
     // End of variables declaration//GEN-END:variables
 
     private void Pintar() {
@@ -220,22 +255,24 @@ public class Editor_Tablero extends javax.swing.JFrame implements MouseListener 
             //System.out.println("Hola");
             Nodo_Matriz Aux1 = Puntero;
             while (Aux1 != null) {
-                System.out.println("Aux1");
+                //System.out.println("Aux1");
                 Nodo_Matriz Aux2 = Aux1;
                 while (Aux2 != null) {
-                    System.out.println("Aux2");
+                    //System.out.println("Aux2");
                     if (!Aux2.isVisible()) {
-                        System.out.println("No es visible");
+                        //System.out.println("No es visible");
                         Area.add(Aux2);
                         Aux2.setVisible(true);
-                        Aux2.setBounds(Aux2.X*30, Aux2.Y*30, 30, 30);
+                        Aux2.setBounds((Aux2.X + corrimiento) * 30, Aux2.Y * 30, 30, 30);
                         //aux.setText("Hola");
                         Aux2.setBorder(LineBorder.createGrayLineBorder());
                         Aux2.setOpaque(true);
                         Aux2.addMouseListener(this);
                         //System.out.println(Color.);
                         //float a = 0.6;
-                        Aux2.setBackground(Color.getHSBColor(0.63f,0.45f,1.0f));
+                        Aux2.setBackground(Color.getHSBColor(0.63f, 0.45f, 1.0f));
+                        //Area.revalidate();
+                        //Area.repaint();
                     }
                     Aux2 = Aux2.derecha;
                 }
@@ -243,10 +280,11 @@ public class Editor_Tablero extends javax.swing.JFrame implements MouseListener 
             }
         }
     }
+
     private void Cargar() {
-        if(Objetos.Raiz!=null){
+        if (Objetos.Raiz != null) {
             BtSelect.setIcon(new ImageIcon(Objetos.Raiz.ruta));
-        }else{
+        } else {
             BtSelect.setIcon(null);
             BtSelect.setEnabled(false);
         }
@@ -255,9 +293,11 @@ public class Editor_Tablero extends javax.swing.JFrame implements MouseListener 
 
     @Override
     public void mouseClicked(MouseEvent e) {
-        
+
     }
-   @Override    public void mouseReleased(MouseEvent e) {
+
+    @Override
+    public void mouseReleased(MouseEvent e) {
         //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
@@ -272,13 +312,60 @@ public class Editor_Tablero extends javax.swing.JFrame implements MouseListener 
 
     @Override
     public void mousePressed(MouseEvent e) {
-        if(BtSelect.isSelected()){
-            System.out.println("Hola");
-            System.out.println(e.getSource());
+        if (BtSelect.isSelected()) {
+            //System.out.println("Hola");
+            //System.out.println(e.getSource());
             Nodo_Matriz Aux = (Nodo_Matriz) e.getComponent();
-            Aux.Objeto = Objetos.Extraer_FIFO();
-            Aux.setIcon(BtSelect.getIcon());
-            Cargar();
+            if (Aux.Objeto == null) {
+                Aux.Objeto = Objetos.Extraer_FIFO();
+                Aux.setIcon(BtSelect.getIcon());
+                Cargar();
+            }
+        }
+    }
+
+    private void AjustarBotones() {
+        if (Puntero.izquierda != null) {
+            RightBt.setEnabled(true);
+        } else {
+            RightBt.setEnabled(false);
+        }
+        int Aux1 = 0;
+        Nodo_Matriz Aux2 = Puntero;
+        while (Aux1 < 24 && Aux2 != null) {
+            Aux2 = Aux2.derecha;
+            Aux1++;
+        }
+        if (Aux2 != null) {
+            LeftBt.setEnabled(true);
+        } else {
+            LeftBt.setEnabled(false);
+        }
+    }
+
+    private void MoverDer() {
+        Nodo_Matriz Aux1 = Tablero.Raiz;
+        while (Aux1 != null) {
+            Nodo_Matriz Aux2 = Aux1;
+            while (Aux2 != null) {
+                Rectangle info = Aux2.getBounds();
+                Aux2.setBounds(info.x - 30, info.y, 30, 30);
+                Aux2 = Aux2.derecha;
+            }
+            Aux1 = Aux1.abajo;
+        }
+    }
+
+    private void MoverIzq() {
+        Nodo_Matriz Aux1 = Tablero.Raiz;
+        while (Aux1 != null) {
+            Nodo_Matriz Aux2 = Aux1;
+            while (Aux2 != null) {
+                Rectangle info = Aux2.getBounds();
+                Aux2.setBounds(info.x + 30, info.y, 30, 30);
+                Aux2 = Aux2.derecha;
+            }
+            Aux1 = Aux1.abajo;
         }
     }
 }

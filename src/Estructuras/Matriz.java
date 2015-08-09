@@ -22,6 +22,7 @@ public class Matriz {
                 aux1 = aux1.abajo;
             }
             aux1.abajo = new Nodo_Matriz(aux1.X, aux1.Y + 1);
+            aux1.abajo.arriba = aux1;
             Llenar_Fila(aux1, aux1.abajo);
         }
     }
@@ -29,6 +30,7 @@ public class Matriz {
     void Llenar_Fila(Nodo_Matriz primero, Nodo_Matriz segundo) {
         if (primero.derecha != null) {
             segundo.derecha = new Nodo_Matriz(segundo.X + 1, segundo.Y);
+            segundo.derecha.izquierda = segundo;
             primero.derecha.abajo = segundo.derecha;
             segundo.derecha.arriba = primero.derecha;
             Llenar_Fila(primero.derecha, segundo.derecha);
@@ -44,6 +46,7 @@ public class Matriz {
                 aux1 = aux1.derecha;
             }
             aux1.derecha = new Nodo_Matriz(aux1.X + 1, aux1.Y);
+            aux1.derecha.izquierda = aux1;
             Llenar_Columna(aux1, aux1.derecha);
         }
     }
@@ -51,6 +54,7 @@ public class Matriz {
     void Llenar_Columna(Nodo_Matriz primero, Nodo_Matriz segundo) {
         if (primero.abajo != null) {
             segundo.abajo = new Nodo_Matriz(segundo.X, segundo.Y + 1);
+            segundo.abajo.arriba = segundo;
             primero.abajo.derecha = segundo.abajo;
             segundo.abajo.izquierda = primero.abajo;
             Llenar_Columna(primero.abajo, segundo.abajo);
