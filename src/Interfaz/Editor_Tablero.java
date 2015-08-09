@@ -88,7 +88,7 @@ public class Editor_Tablero extends javax.swing.JFrame implements MouseListener 
             }
         });
         getContentPane().add(BtGraficar);
-        BtGraficar.setBounds(10, 11, 71, 23);
+        BtGraficar.setBounds(10, 11, 90, 23);
 
         BtEliminar.setText("Eliminar");
         BtEliminar.addActionListener(new java.awt.event.ActionListener() {
@@ -97,7 +97,7 @@ public class Editor_Tablero extends javax.swing.JFrame implements MouseListener 
             }
         });
         getContentPane().add(BtEliminar);
-        BtEliminar.setBounds(87, 11, 69, 23);
+        BtEliminar.setBounds(100, 10, 90, 23);
 
         BtDatos.setText("Datos");
         BtDatos.addActionListener(new java.awt.event.ActionListener() {
@@ -106,7 +106,7 @@ public class Editor_Tablero extends javax.swing.JFrame implements MouseListener 
             }
         });
         getContentPane().add(BtDatos);
-        BtDatos.setBounds(162, 11, 61, 23);
+        BtDatos.setBounds(190, 10, 100, 23);
 
         Area.setMinimumSize(new java.awt.Dimension(720, 360));
         Area.setPreferredSize(new java.awt.Dimension(720, 360));
@@ -178,11 +178,13 @@ public class Editor_Tablero extends javax.swing.JFrame implements MouseListener 
     }//GEN-LAST:event_BtGraficarActionPerformed
 
     private void BtEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtEliminarActionPerformed
-        // TODO add your handling code here:
+        Eliminar Ventana = new Eliminar();
+        Ventana.setVisible(true);
     }//GEN-LAST:event_BtEliminarActionPerformed
 
     private void BtDatosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtDatosActionPerformed
-        
+        Datos Ventana = new Datos(Tablero.Raiz);
+        Ventana.setVisible(true);
     }//GEN-LAST:event_BtDatosActionPerformed
 
     private void LeftBtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LeftBtActionPerformed

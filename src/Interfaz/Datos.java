@@ -5,6 +5,8 @@
  */
 package Interfaz;
 
+import Estructuras.Nodo_Matriz;
+
 /**
  *
  * @author Denis
@@ -14,8 +16,16 @@ public class Datos extends javax.swing.JFrame {
     /**
      * Creates new form Datos
      */
+    int Castillo = 0, Principal = 0, Suelo = 0, Pared = 0, Vida = 0, Ficha = 0, Koopa = 0, Goomba = 0;
+
     public Datos() {
         initComponents();
+    }
+
+    Datos(Nodo_Matriz Raiz) {
+        initComponents();
+        Cargar(Raiz);
+        Set();
     }
 
     /**
@@ -27,18 +37,91 @@ public class Datos extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        LbPrincipal = new javax.swing.JLabel();
+        ContPrincipal = new javax.swing.JLabel();
+        LbCastillo = new javax.swing.JLabel();
+        ContCastillo = new javax.swing.JLabel();
+        LbGoomba = new javax.swing.JLabel();
+        ContGoomba = new javax.swing.JLabel();
+        LbKoopa = new javax.swing.JLabel();
+        ContKoopa = new javax.swing.JLabel();
+        LbFicha = new javax.swing.JLabel();
+        ContPared = new javax.swing.JLabel();
+        LbSuelo = new javax.swing.JLabel();
+        ContSuelo = new javax.swing.JLabel();
+        ContVida = new javax.swing.JLabel();
+        LbPared = new javax.swing.JLabel();
+        LbVida = new javax.swing.JLabel();
+        ContFicha = new javax.swing.JLabel();
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
-        );
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setMinimumSize(new java.awt.Dimension(280, 350));
+        setPreferredSize(new java.awt.Dimension(280, 350));
+        getContentPane().setLayout(null);
+
+        LbPrincipal.setText("Personaje");
+        getContentPane().add(LbPrincipal);
+        LbPrincipal.setBounds(73, 33, 70, 14);
+
+        ContPrincipal.setText("0");
+        getContentPane().add(ContPrincipal);
+        ContPrincipal.setBounds(161, 33, 70, 14);
+
+        LbCastillo.setText("Castillo");
+        getContentPane().add(LbCastillo);
+        LbCastillo.setBounds(70, 60, 70, 14);
+
+        ContCastillo.setText("0");
+        getContentPane().add(ContCastillo);
+        ContCastillo.setBounds(160, 60, 70, 14);
+
+        LbGoomba.setText("Goomba");
+        getContentPane().add(LbGoomba);
+        LbGoomba.setBounds(70, 90, 70, 14);
+
+        ContGoomba.setText("0");
+        getContentPane().add(ContGoomba);
+        ContGoomba.setBounds(160, 90, 70, 14);
+
+        LbKoopa.setText("Koopa");
+        getContentPane().add(LbKoopa);
+        LbKoopa.setBounds(70, 120, 70, 14);
+
+        ContKoopa.setText("0");
+        getContentPane().add(ContKoopa);
+        ContKoopa.setBounds(160, 120, 70, 14);
+
+        LbFicha.setText("Ficha");
+        getContentPane().add(LbFicha);
+        LbFicha.setBounds(70, 150, 70, 14);
+
+        ContPared.setText("0");
+        getContentPane().add(ContPared);
+        ContPared.setBounds(160, 240, 70, 14);
+
+        LbSuelo.setText("Suelo");
+        getContentPane().add(LbSuelo);
+        LbSuelo.setBounds(70, 210, 70, 14);
+
+        ContSuelo.setText("0");
+        getContentPane().add(ContSuelo);
+        ContSuelo.setBounds(160, 210, 70, 14);
+
+        ContVida.setText("0");
+        getContentPane().add(ContVida);
+        ContVida.setBounds(160, 180, 70, 14);
+
+        LbPared.setText("Pared");
+        getContentPane().add(LbPared);
+        LbPared.setBounds(70, 240, 70, 14);
+
+        LbVida.setText("Vida");
+        getContentPane().add(LbVida);
+        LbVida.setBounds(70, 180, 70, 14);
+
+        ContFicha.setText("0");
+        getContentPane().add(ContFicha);
+        ContFicha.setBounds(160, 150, 70, 14);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -79,5 +162,70 @@ public class Datos extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel ContCastillo;
+    private javax.swing.JLabel ContFicha;
+    private javax.swing.JLabel ContGoomba;
+    private javax.swing.JLabel ContKoopa;
+    private javax.swing.JLabel ContPared;
+    private javax.swing.JLabel ContPrincipal;
+    private javax.swing.JLabel ContSuelo;
+    private javax.swing.JLabel ContVida;
+    private javax.swing.JLabel LbCastillo;
+    private javax.swing.JLabel LbFicha;
+    private javax.swing.JLabel LbGoomba;
+    private javax.swing.JLabel LbKoopa;
+    private javax.swing.JLabel LbPared;
+    private javax.swing.JLabel LbPrincipal;
+    private javax.swing.JLabel LbSuelo;
+    private javax.swing.JLabel LbVida;
     // End of variables declaration//GEN-END:variables
+    private void Cargar(Nodo_Matriz Raiz) {
+        Nodo_Matriz Aux1 = Raiz;
+        while (Aux1 != null) {
+            Nodo_Matriz Aux2 = Aux1;
+            while (Aux2 != null) {
+                if (Aux2.Objeto != null) {
+                    switch (Aux2.Objeto.tipo) {
+                        case "Suelo":
+                            Suelo++;
+                            break;
+                        case "Pared":
+                            Pared++;
+                            break;
+                        case "Goomba":
+                            Goomba++;
+                            break;
+                        case "Koopa":
+                            Koopa++;
+                            break;
+                        case "Ficha":
+                            Ficha++;
+                            break;
+                        case "Vida":
+                            Vida++;
+                            break;
+                        case "Principal":
+                            Principal++;
+                            break;
+                        case "Castillo":
+                            Castillo++;
+                            break;
+                    }
+                }
+                Aux2 = Aux2.derecha;
+            }
+            Aux1 = Aux1.abajo;
+        }
+    }
+
+    private void Set() {
+        ContPrincipal.setText(Integer.toString(Principal));
+        ContCastillo.setText(Integer.toString(Castillo));
+        ContGoomba.setText(Integer.toString(Goomba));
+        ContKoopa.setText(Integer.toString(Koopa));
+        ContFicha.setText(Integer.toString(Ficha));
+        ContVida.setText(Integer.toString(Vida));
+        ContSuelo.setText(Integer.toString(Suelo));
+        ContPared.setText(Integer.toString(Pared));
+    }
 }
