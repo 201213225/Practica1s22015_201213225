@@ -96,7 +96,7 @@ public class Tablero extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void BtPausaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtPausaActionPerformed
-        
+
     }//GEN-LAST:event_BtPausaActionPerformed
 
     /**
@@ -162,12 +162,14 @@ public class Tablero extends javax.swing.JFrame {
                 if (Aux2.Objeto != null) {
                     Nodo_Lista objeto = Aux2.Objeto;
                     Nodo_Lista Nuevo = new Nodo_Lista(objeto.indice, objeto.nombre, objeto.tipo, objeto.ruta);
-                    if(Nuevo.tipo.equals("Principal")){
-                        Aux4.Principal=Nuevo;
-                    }else if(Nuevo.tipo.equals("Ficha")||Nuevo.tipo.equals("Vida")||Nuevo.tipo.equals("Castillo")){
-                        Aux4.Item=Nuevo;
+                    if (Nuevo.tipo.equals("Principal")) {
+                        Aux4.Principal = Nuevo;
+                    } else if (Nuevo.tipo.equals("Ficha") || Nuevo.tipo.equals("Vida") || Nuevo.tipo.equals("Castillo")) {
+                        Aux4.Item = Nuevo;
+                    } else {
+                        Aux4.Objeto = Nuevo;
                     }
-                    
+
                     Aux4.setIcon(Aux2.getIcon());
                 }
                 Aux4 = Aux4.derecha;
@@ -205,15 +207,32 @@ public class Tablero extends javax.swing.JFrame {
                         //Area.revalidate();
                         //Area.repaint();
                         if (Aux2.getIcon() != null) {
-                            Nodo_Lista Aux3 = Aux2.Objeto;
-                            if (Aux3.tipo.equals("Goomba")
-                                    || Aux3.tipo.equals("Koopa")
-                                    || Aux3.tipo.equals("Principal")) {
+                            if (Aux2.Objeto != null) {
+                                
+                                Nodo_Lista Aux3 = Aux2.Objeto;
+
                                 Aux3.casilla = Aux2;
-                                Thread nuevo = new Thread(Aux2.Objeto);
-                                nuevo.start();
+                                
+                                if(!(Aux2.Objeto.tipo.equals("Suelo")&&!(Aux2.Objeto.tipo.equals("Pared")))){
+                                    Aux3.running = true;
+                                    Thread nuevo = new Thread(Aux2.Objeto);
+                                    nuevo.start();
+                                }
                                 //System.out.println("Hilo agregado");
-                            }//*/
+
+                            }else if(Aux2.Principal!=null){
+                                Nodo_Lista Aux3 = Aux2.Principal;
+
+                                Aux3.casilla = Aux2;
+                                Aux3.running = true;
+                                Thread nuevo = new Thread(Aux2.Principal);
+                                nuevo.start();
+                            }else if(Aux2.Item!=null){
+                                Nodo_Lista Aux3 = Aux2.Item;
+
+                                Aux3.casilla = Aux2;
+                            }
+                            
                         }
                     }
                     Aux2 = Aux2.derecha;

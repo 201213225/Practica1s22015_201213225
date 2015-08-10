@@ -60,6 +60,7 @@ public class Editor_Tablero extends javax.swing.JFrame implements MouseListener 
         RightBt = new javax.swing.JButton();
         BtSelect = new javax.swing.JToggleButton();
         BtSiguiente = new javax.swing.JButton();
+        BtQuitar = new javax.swing.JToggleButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(770, 490));
@@ -161,6 +162,10 @@ public class Editor_Tablero extends javax.swing.JFrame implements MouseListener 
         });
         getContentPane().add(BtSiguiente);
         BtSiguiente.setBounds(510, 420, 110, 23);
+
+        BtQuitar.setText("Quitar");
+        getContentPane().add(BtQuitar);
+        BtQuitar.setBounds(170, 420, 63, 23);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -284,6 +289,7 @@ public class Editor_Tablero extends javax.swing.JFrame implements MouseListener 
     private javax.swing.JButton BtDatos;
     private javax.swing.JButton BtEliminar;
     private javax.swing.JButton BtGraficar;
+    private javax.swing.JToggleButton BtQuitar;
     private javax.swing.JToggleButton BtSelect;
     private javax.swing.JButton BtSiguiente;
     private javax.swing.JButton LeftBt;

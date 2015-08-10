@@ -3,12 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Denis/Documents/NetBeansProjects/Practica1s22015_201213225/src/Estructuras/Lista.java</file>
-            <file>file:/C:/Users/Denis/Documents/NetBeansProjects/Practica1s22015_201213225/src/Interfaz/Interfaz_Carga.java</file>
-            <file>file:/C:/Users/Denis/Documents/NetBeansProjects/Practica1s22015_201213225/src/Interfaz/Editor_Tablero.java</file>
+            <file>file:/C:/Users/Denis/Documents/NetBeansProjects/Practica1s22015_201213225/src/Estructuras/Nodo_Lista.java</file>
+            <file>file:/C:/Users/Denis/Documents/NetBeansProjects/Practica1s22015_201213225/src/Interfaz/Tablero.java</file>
             <file>file:/C:/Users/Denis/Documents/NetBeansProjects/Practica1s22015_201213225/src/Graphviz/Graphviz.java</file>
-            <file>file:/C:/Users/Denis/Documents/NetBeansProjects/Practica1s22015_201213225/src/Interfaz/Datos.java</file>
-            <file>file:/C:/Users/Denis/Documents/NetBeansProjects/Practica1s22015_201213225/src/Interfaz/Eliminar.java</file>
+            <file>file:/C:/Users/Denis/Documents/NetBeansProjects/Practica1s22015_201213225/src/Estructuras/Nodo_Matriz.java</file>
         </group>
     </open-files>
 </project-private>
