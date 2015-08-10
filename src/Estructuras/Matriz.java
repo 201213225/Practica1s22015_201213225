@@ -5,6 +5,8 @@
  */
 package Estructuras;
 
+import java.awt.Rectangle;
+
 /**
  *
  * @author Denis
@@ -58,6 +60,70 @@ public class Matriz {
             primero.abajo.derecha = segundo.abajo;
             segundo.abajo.izquierda = primero.abajo;
             Llenar_Columna(primero.abajo, segundo.abajo);
+        }
+    }
+
+    public void eliminarFila(int Indice) {
+        Nodo_Matriz Aux = Raiz;
+        while (Aux != null && Aux.Y != Indice) {
+            Aux = Aux.abajo;
+        }
+        if (Aux != null) {
+            if (Aux.arriba != null && Aux.abajo != null) {
+                while(Aux!=null){
+                    Aux.abajo.arriba = Aux.arriba;
+                    Aux.arriba.abajo = Aux.abajo;
+                    Aux.setVisible(false);
+                    Aux=Aux.derecha;
+                }
+            } else {
+                if (Aux.arriba == null) {
+                    Raiz = Aux.abajo;
+                    while (Aux != null) {
+                        Aux.abajo.arriba = null;
+                        Aux.setVisible(false);
+                        Aux = Aux.derecha;
+                    }
+                }else {
+                    while (Aux != null) {
+                        Aux.arriba.abajo = null;
+                        Aux.setVisible(false);
+                        Aux = Aux.derecha;
+                    }
+                }
+            }
+        }
+    }
+
+    public void eliminarColumna(int Indice) {
+        Nodo_Matriz Aux = Raiz;
+        while (Aux != null && Aux.X != Indice) {
+            Aux = Aux.derecha;
+        }
+        if (Aux != null) {
+            if (Aux.derecha != null && Aux.izquierda != null) {
+                while(Aux!=null){
+                    Aux.derecha.izquierda=Aux.izquierda;
+                    Aux.izquierda.derecha=Aux.derecha;
+                    Aux.setVisible(false);
+                    Aux=Aux.abajo;
+                }
+            } else {
+                if (Aux.izquierda == null) {
+                    Raiz = Aux.derecha;
+                    while (Aux != null) {
+                        Aux.derecha.izquierda = null;
+                        Aux.setVisible(false);
+                        Aux = Aux.abajo;
+                    }
+                }else {
+                    while (Aux != null) {
+                        Aux.izquierda.derecha = null;
+                        Aux.setVisible(false);
+                        Aux = Aux.abajo;
+                    }
+                }
+            }
         }
     }
 }

@@ -5,6 +5,12 @@
  */
 package Interfaz;
 
+import Estructuras.Matriz;
+import Estructuras.Nodo_Lista;
+import Estructuras.Nodo_Matriz;
+import java.awt.Color;
+import javax.swing.border.LineBorder;
+
 /**
  *
  * @author Denis
@@ -14,8 +20,21 @@ public class Tablero extends javax.swing.JFrame {
     /**
      * Creates new form Tablero
      */
+    Matriz Original;
+    Matriz Tablero;
+    Nodo_Matriz Puntero;
+    int corrimiento = 0;
+
     public Tablero() {
         initComponents();
+    }
+
+    public Tablero(Matriz Tablero) {
+        initComponents();
+        Original = Clone(Tablero);
+        Tablero = Clone(Tablero);
+        Puntero = Tablero.Raiz;
+        Pintar();
     }
 
     /**
@@ -27,21 +46,58 @@ public class Tablero extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        Area = new javax.swing.JPanel();
+        BtPausa = new javax.swing.JButton();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        Area.setPreferredSize(new java.awt.Dimension(720, 360));
+
+        javax.swing.GroupLayout AreaLayout = new javax.swing.GroupLayout(Area);
+        Area.setLayout(AreaLayout);
+        AreaLayout.setHorizontalGroup(
+            AreaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 720, Short.MAX_VALUE)
+        );
+        AreaLayout.setVerticalGroup(
+            AreaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 360, Short.MAX_VALUE)
+        );
+
+        BtPausa.setText("Pausa");
+        BtPausa.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtPausaActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(BtPausa)
+                    .addComponent(Area, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(BtPausa)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(Area, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void BtPausaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtPausaActionPerformed
+        
+    }//GEN-LAST:event_BtPausaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -79,5 +135,96 @@ public class Tablero extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel Area;
+    private javax.swing.JButton BtPausa;
     // End of variables declaration//GEN-END:variables
+
+    private Matriz Clone(Matriz Tablero) {
+        Matriz Retornar = new Matriz();
+        Retornar.Incerdar_Columna();
+        Nodo_Matriz Aux1 = Tablero.Raiz;
+        while (Aux1.abajo != null) {
+            Retornar.Incertar_Fila();
+            Aux1 = Aux1.abajo;
+        }
+        Aux1 = Tablero.Raiz;
+        while (Aux1.derecha != null) {
+            Retornar.Incerdar_Columna();
+            Aux1 = Aux1.derecha;
+        }
+        Aux1 = Tablero.Raiz;
+        Nodo_Matriz Aux3 = Retornar.Raiz;
+        while (Aux1 != null) {
+            Nodo_Matriz Aux2 = Aux1;
+            Nodo_Matriz Aux4 = Aux3;
+            while (Aux2 != null) {
+                //System.out.println("x:" + Aux2.X + " y:" + Aux2.Y);
+                if (Aux2.Objeto != null) {
+                    Nodo_Lista objeto = Aux2.Objeto;
+                    Nodo_Lista Nuevo = new Nodo_Lista(objeto.indice, objeto.nombre, objeto.tipo, objeto.ruta);
+                    if(Nuevo.tipo.equals("Principal")){
+                        Aux4.Principal=Nuevo;
+                    }else if(Nuevo.tipo.equals("Ficha")||Nuevo.tipo.equals("Vida")||Nuevo.tipo.equals("Castillo")){
+                        Aux4.Item=Nuevo;
+                    }
+                    
+                    Aux4.setIcon(Aux2.getIcon());
+                }
+                Aux4 = Aux4.derecha;
+                Aux2 = Aux2.derecha;
+            }
+            Aux3 = Aux3.abajo;
+            Aux1 = Aux1.abajo;
+        }
+        return Retornar;
+    }
+
+    private void Pintar() {
+        if (Puntero == null && Tablero.Raiz != null) {
+            Puntero = Tablero.Raiz;
+        }
+        if (Puntero != null) {
+            //System.out.println("Hola");
+            Nodo_Matriz Aux1 = Puntero;
+            while (Aux1 != null) {
+                //System.out.println("Aux1");
+                Nodo_Matriz Aux2 = Aux1;
+                while (Aux2 != null) {
+                    //System.out.println("Aux2");
+                    if (!Aux2.isVisible()) {
+                        //System.out.println("No es visible");
+                        Area.add(Aux2);
+                        Aux2.setVisible(true);
+                        Aux2.setBounds((Aux2.X + corrimiento) * 30, Aux2.Y * 30, 30, 30);
+                        //aux.setText("Hola");
+                        Aux2.setBorder(LineBorder.createGrayLineBorder());
+                        Aux2.setOpaque(true);
+                        //System.out.println(Color.);
+                        //float a = 0.6;
+                        Aux2.setBackground(Color.getHSBColor(0.63f, 0.45f, 1.0f));
+                        //Area.revalidate();
+                        //Area.repaint();
+                        if (Aux2.getIcon() != null) {
+                            Nodo_Lista Aux3 = Aux2.Objeto;
+                            if (Aux3.tipo.equals("Goomba")
+                                    || Aux3.tipo.equals("Koopa")
+                                    || Aux3.tipo.equals("Principal")) {
+                                Aux3.casilla = Aux2;
+                                Thread nuevo = new Thread(Aux2.Objeto);
+                                nuevo.start();
+                                //System.out.println("Hilo agregado");
+                            }//*/
+                        }
+                    }
+                    Aux2 = Aux2.derecha;
+                }
+                Aux1 = Aux1.abajo;
+            }
+        }
+    }
+
+    private void mover() {
+
+    }
+
 }

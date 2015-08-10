@@ -11,6 +11,7 @@ import java.awt.Color;
 import java.awt.Rectangle;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.awt.event.WindowEvent;
 import javax.swing.ImageIcon;
 import javax.swing.border.LineBorder;
 
@@ -58,6 +59,7 @@ public class Editor_Tablero extends javax.swing.JFrame implements MouseListener 
         LeftBt = new javax.swing.JButton();
         RightBt = new javax.swing.JButton();
         BtSelect = new javax.swing.JToggleButton();
+        BtSiguiente = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(770, 490));
@@ -151,6 +153,15 @@ public class Editor_Tablero extends javax.swing.JFrame implements MouseListener 
         getContentPane().add(BtSelect);
         BtSelect.setBounds(360, 410, 40, 40);
 
+        BtSiguiente.setText("Siguiente");
+        BtSiguiente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtSiguienteActionPerformed(evt);
+            }
+        });
+        getContentPane().add(BtSiguiente);
+        BtSiguiente.setBounds(510, 420, 110, 23);
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
@@ -178,8 +189,31 @@ public class Editor_Tablero extends javax.swing.JFrame implements MouseListener 
     }//GEN-LAST:event_BtGraficarActionPerformed
 
     private void BtEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtEliminarActionPerformed
-        Eliminar Ventana = new Eliminar();
-        Ventana.setVisible(true);
+        Eliminar Ventana2 = new Eliminar(Tablero);
+        Ventana2.addWindowListener(new java.awt.event.WindowAdapter() {
+
+            @Override
+            public void windowClosed(WindowEvent e) {
+                Puntero = Tablero.Raiz;
+                ActualizarPos();
+                Pintar();
+            }
+
+            @Override
+            public void windowClosing(WindowEvent e) {
+
+                Puntero = Tablero.Raiz;
+                ActualizarPos();
+                Pintar();
+            }
+
+        });
+        Ventana2.setVisible(true);
+        //Ventana.setVisible(true);
+        //while(Ventana.isVisible()){}
+        //System.out.println("Adios");
+        //if(Ventana){}
+        //Dialog g = new Dialoge(this, Ventana);
     }//GEN-LAST:event_BtEliminarActionPerformed
 
     private void BtDatosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtDatosActionPerformed
@@ -201,6 +235,12 @@ public class Editor_Tablero extends javax.swing.JFrame implements MouseListener 
         MoverIzq();
         AjustarBotones();
     }//GEN-LAST:event_RightBtActionPerformed
+
+    private void BtSiguienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtSiguienteActionPerformed
+        Tablero Tablero = new Tablero(this.Tablero);
+        Tablero.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_BtSiguienteActionPerformed
 
     /**
      * @param args the command line arguments
@@ -245,6 +285,7 @@ public class Editor_Tablero extends javax.swing.JFrame implements MouseListener 
     private javax.swing.JButton BtEliminar;
     private javax.swing.JButton BtGraficar;
     private javax.swing.JToggleButton BtSelect;
+    private javax.swing.JButton BtSiguiente;
     private javax.swing.JButton LeftBt;
     private javax.swing.JButton RightBt;
     // End of variables declaration//GEN-END:variables
@@ -367,6 +408,24 @@ public class Editor_Tablero extends javax.swing.JFrame implements MouseListener 
                 Aux2.setBounds(info.x + 30, info.y, 30, 30);
                 Aux2 = Aux2.derecha;
             }
+            Aux1 = Aux1.abajo;
+        }
+    }
+    private void ActualizarPos(){
+        Nodo_Matriz Aux1 = Tablero.Raiz;
+        int y = 0;
+        while(Aux1!=null){
+            Nodo_Matriz Aux2=Aux1;
+            int x =0;
+            while(Aux2!=null){
+                Aux2.X = x;
+                Aux2.Y = y;
+                Aux2.setBounds(x*30, y*30, 30, 30);
+                //System.out.println("x:" + (x*30) + " y:" + (y*30));
+                x++;
+                Aux2 = Aux2.derecha;
+            }
+            y++;
             Aux1 = Aux1.abajo;
         }
     }
