@@ -26,8 +26,14 @@
           <Group type="102" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="BtPausa" min="-2" max="-2" attributes="0"/>
-                  <Component id="Area" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Component id="Area" min="-2" max="-2" attributes="0"/>
+                  <Group type="102" attributes="0">
+                      <Component id="BtPausa" min="-2" pref="150" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="BtGraficar" min="-2" pref="150" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="BtReiniciar" min="-2" pref="150" max="-2" attributes="0"/>
+                  </Group>
               </Group>
               <EmptySpace max="32767" attributes="0"/>
           </Group>
@@ -37,7 +43,11 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="1" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="BtPausa" min="-2" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="BtPausa" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="BtGraficar" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="BtReiniciar" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Component id="Area" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="32767" attributes="0"/>
@@ -66,13 +76,29 @@
         </DimensionLayout>
       </Layout>
     </Container>
-    <Component class="javax.swing.JButton" name="BtPausa">
+    <Component class="javax.swing.JToggleButton" name="BtPausa">
       <Properties>
         <Property name="text" type="java.lang.String" value="Pausa"/>
+        <Property name="focusable" type="boolean" value="false"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BtPausaActionPerformed"/>
       </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="BtGraficar">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Graficar"/>
+        <Property name="focusable" type="boolean" value="false"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BtGraficarActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="BtReiniciar">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Reiniciar"/>
+        <Property name="focusable" type="boolean" value="false"/>
+      </Properties>
     </Component>
   </SubComponents>
 </Form>

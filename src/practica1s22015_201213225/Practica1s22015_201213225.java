@@ -18,6 +18,7 @@ public class Practica1s22015_201213225 {
      * @param args the command line arguments
      */
     public static Lista carga;
+    public static boolean Corre = true;
     public static void main(String[] args) {
         
         Interfaz_Carga c = new Interfaz_Carga();

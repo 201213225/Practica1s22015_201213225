@@ -8,14 +8,17 @@ package Interfaz;
 import Estructuras.Matriz;
 import Estructuras.Nodo_Lista;
 import Estructuras.Nodo_Matriz;
+import Graphviz.Graphviz;
 import java.awt.Color;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import javax.swing.border.LineBorder;
 
 /**
  *
  * @author Denis
  */
-public class Tablero extends javax.swing.JFrame {
+public class Tablero extends javax.swing.JFrame implements KeyListener {
 
     /**
      * Creates new form Tablero
@@ -23,18 +26,22 @@ public class Tablero extends javax.swing.JFrame {
     Matriz Original;
     Matriz Tablero;
     Nodo_Matriz Puntero;
+    Nodo_Lista Personaje;
     int corrimiento = 0;
+    boolean salto = false, izquierda = false, derecha = false, doblesalto = false;
 
     public Tablero() {
         initComponents();
     }
 
     public Tablero(Matriz Tablero) {
+        addKeyListener(this);
         initComponents();
         Original = Clone(Tablero);
-        Tablero = Clone(Tablero);
-        Puntero = Tablero.Raiz;
+        this.Tablero = Clone(Tablero);
+        Puntero = this.Tablero.Raiz;
         Pintar();
+        //addKeyListener(this);
     }
 
     /**
@@ -47,7 +54,9 @@ public class Tablero extends javax.swing.JFrame {
     private void initComponents() {
 
         Area = new javax.swing.JPanel();
-        BtPausa = new javax.swing.JButton();
+        BtPausa = new javax.swing.JToggleButton();
+        BtGraficar = new javax.swing.JButton();
+        BtReiniciar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -65,11 +74,23 @@ public class Tablero extends javax.swing.JFrame {
         );
 
         BtPausa.setText("Pausa");
+        BtPausa.setFocusable(false);
         BtPausa.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BtPausaActionPerformed(evt);
             }
         });
+
+        BtGraficar.setText("Graficar");
+        BtGraficar.setFocusable(false);
+        BtGraficar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtGraficarActionPerformed(evt);
+            }
+        });
+
+        BtReiniciar.setText("Reiniciar");
+        BtReiniciar.setFocusable(false);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -78,15 +99,23 @@ public class Tablero extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(BtPausa)
-                    .addComponent(Area, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(Area, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(BtPausa, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(BtGraficar, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(BtReiniciar, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(BtPausa)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(BtPausa)
+                    .addComponent(BtGraficar)
+                    .addComponent(BtReiniciar))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(Area, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -96,8 +125,19 @@ public class Tablero extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void BtPausaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtPausaActionPerformed
-
+        // TODO add your handling code here:
+        if(BtPausa.isSelected()){
+            practica1s22015_201213225.Practica1s22015_201213225.Corre = false;
+        }else{
+            practica1s22015_201213225.Practica1s22015_201213225.Corre = true;
+        }
+        //System.out.println(practica1s22015_201213225.Practica1s22015_201213225.Corre);
     }//GEN-LAST:event_BtPausaActionPerformed
+
+    private void BtGraficarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtGraficarActionPerformed
+        Graphviz Aux = new Graphviz(Tablero,0);
+        Aux = new Graphviz(Tablero,1);
+    }//GEN-LAST:event_BtGraficarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -136,7 +176,9 @@ public class Tablero extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel Area;
-    private javax.swing.JButton BtPausa;
+    private javax.swing.JButton BtGraficar;
+    private javax.swing.JToggleButton BtPausa;
+    private javax.swing.JButton BtReiniciar;
     // End of variables declaration//GEN-END:variables
 
     private Matriz Clone(Matriz Tablero) {
@@ -164,6 +206,7 @@ public class Tablero extends javax.swing.JFrame {
                     Nodo_Lista Nuevo = new Nodo_Lista(objeto.indice, objeto.nombre, objeto.tipo, objeto.ruta);
                     if (Nuevo.tipo.equals("Principal")) {
                         Aux4.Principal = Nuevo;
+                        Personaje = Nuevo;
                     } else if (Nuevo.tipo.equals("Ficha") || Nuevo.tipo.equals("Vida") || Nuevo.tipo.equals("Castillo")) {
                         Aux4.Item = Nuevo;
                     } else {
@@ -208,31 +251,32 @@ public class Tablero extends javax.swing.JFrame {
                         //Area.repaint();
                         if (Aux2.getIcon() != null) {
                             if (Aux2.Objeto != null) {
-                                
+
                                 Nodo_Lista Aux3 = Aux2.Objeto;
 
                                 Aux3.casilla = Aux2;
-                                
-                                if(!(Aux2.Objeto.tipo.equals("Suelo")&&!(Aux2.Objeto.tipo.equals("Pared")))){
+
+                                if (!(Aux2.Objeto.tipo.equals("Suelo") && !(Aux2.Objeto.tipo.equals("Pared")))) {
                                     Aux3.running = true;
                                     Thread nuevo = new Thread(Aux2.Objeto);
                                     nuevo.start();
                                 }
                                 //System.out.println("Hilo agregado");
 
-                            }else if(Aux2.Principal!=null){
+                            } else if (Aux2.Principal != null) {
                                 Nodo_Lista Aux3 = Aux2.Principal;
-
                                 Aux3.casilla = Aux2;
                                 Aux3.running = true;
                                 Thread nuevo = new Thread(Aux2.Principal);
                                 nuevo.start();
-                            }else if(Aux2.Item!=null){
+
+                                KeyListener flechas;
+                            } else if (Aux2.Item != null) {
                                 Nodo_Lista Aux3 = Aux2.Item;
 
                                 Aux3.casilla = Aux2;
                             }
-                            
+
                         }
                     }
                     Aux2 = Aux2.derecha;
@@ -244,6 +288,53 @@ public class Tablero extends javax.swing.JFrame {
 
     private void mover() {
 
+    }
+
+    @Override
+    public void keyTyped(KeyEvent e) {
+
+    }
+
+    @Override
+    public void keyPressed(KeyEvent e) {
+        if (e.getKeyCode() == KeyEvent.VK_UP) {
+            if (!salto && Personaje.casilla.abajo!=null && !Personaje.VerificarCaida()) {
+                salto = true;
+                //System.out.println("Salto");
+            } else if (!doblesalto 
+                    && !derecha 
+                    && !izquierda 
+                    && Personaje.casilla.abajo.abajo!=null 
+                    && Personaje.casilla.abajo.abajo.Objeto!=null
+                    && (Personaje.casilla.abajo.abajo.Objeto.equals("Suelo")|| Personaje.casilla.abajo.abajo.Objeto.equals("Pared"))) {
+                doblesalto = true;
+                //System.out.println("DobleSalto");
+            }
+        } else if (e.getKeyCode() == KeyEvent.VK_LEFT && !doblesalto) {
+            izquierda = true;
+            if(Personaje.VerificarIzqP()){
+                Personaje.MoverIzquierdaP();
+            }
+            //System.out.println("Derecha");
+        } else if (e.getKeyCode() == KeyEvent.VK_RIGHT && !doblesalto) {
+            derecha = true;
+            if(Personaje.VerificarDerP()){
+                Personaje.MoverDerechaP();
+            }
+            //System.out.println("Izquierda");
+        }
+    }
+
+    @Override
+    public void keyReleased(KeyEvent e) {
+        if (e.getKeyCode() == KeyEvent.VK_UP) {
+            salto = false;
+            doblesalto = false;
+        } else if (e.getKeyCode() == KeyEvent.VK_LEFT) {
+            izquierda = false;
+        } else if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
+            derecha = false;
+        }
     }
 
 }

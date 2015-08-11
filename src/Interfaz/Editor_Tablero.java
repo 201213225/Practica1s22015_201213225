@@ -191,6 +191,7 @@ public class Editor_Tablero extends javax.swing.JFrame implements MouseListener 
     private void BtGraficarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtGraficarActionPerformed
         Graphviz a = new Graphviz(Objetos);
         a = new Graphviz(Tablero);
+        a = new Graphviz(Tablero,2);
     }//GEN-LAST:event_BtGraficarActionPerformed
 
     private void BtEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtEliminarActionPerformed
@@ -243,6 +244,7 @@ public class Editor_Tablero extends javax.swing.JFrame implements MouseListener 
 
     private void BtSiguienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtSiguienteActionPerformed
         Tablero Tablero = new Tablero(this.Tablero);
+        //Tablero.addKeyListener(Tablero);
         Tablero.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_BtSiguienteActionPerformed
