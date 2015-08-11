@@ -12,13 +12,16 @@ import Graphviz.Graphviz;
 import java.awt.Color;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import javax.swing.border.LineBorder;
 
 /**
  *
  * @author Denis
  */
-public class Tablero extends javax.swing.JFrame implements KeyListener {
+public class Tablero extends javax.swing.JFrame implements KeyListener, Runnable {
 
     /**
      * Creates new form Tablero
@@ -28,6 +31,7 @@ public class Tablero extends javax.swing.JFrame implements KeyListener {
     Nodo_Matriz Puntero;
     Nodo_Lista Personaje;
     int corrimiento = 0;
+    int vida = 1, puntos = 0;
     boolean salto = false, izquierda = false, derecha = false, doblesalto = false;
 
     public Tablero() {
@@ -37,7 +41,7 @@ public class Tablero extends javax.swing.JFrame implements KeyListener {
     public Tablero(Matriz Tablero) {
         addKeyListener(this);
         initComponents();
-        Original = Clone(Tablero);
+        Original = Tablero;
         this.Tablero = Clone(Tablero);
         Puntero = this.Tablero.Raiz;
         Pintar();
@@ -57,6 +61,8 @@ public class Tablero extends javax.swing.JFrame implements KeyListener {
         BtPausa = new javax.swing.JToggleButton();
         BtGraficar = new javax.swing.JButton();
         BtReiniciar = new javax.swing.JButton();
+        LbVidas = new javax.swing.JLabel();
+        LbPuntos = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -91,6 +97,15 @@ public class Tablero extends javax.swing.JFrame implements KeyListener {
 
         BtReiniciar.setText("Reiniciar");
         BtReiniciar.setFocusable(false);
+        BtReiniciar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtReiniciarActionPerformed(evt);
+            }
+        });
+
+        LbVidas.setText("Vidas: 1");
+
+        LbPuntos.setText("Puntos: 0");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -105,17 +120,25 @@ public class Tablero extends javax.swing.JFrame implements KeyListener {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(BtGraficar, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(BtReiniciar, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(BtReiniciar, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(LbVidas, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(LbPuntos, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(BtPausa)
-                    .addComponent(BtGraficar)
-                    .addComponent(BtReiniciar))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(BtPausa)
+                        .addComponent(BtGraficar)
+                        .addComponent(BtReiniciar))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(LbVidas)
+                        .addComponent(LbPuntos)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(Area, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -126,18 +149,25 @@ public class Tablero extends javax.swing.JFrame implements KeyListener {
 
     private void BtPausaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtPausaActionPerformed
         // TODO add your handling code here:
-        if(BtPausa.isSelected()){
+        if (BtPausa.isSelected()) {
             practica1s22015_201213225.Practica1s22015_201213225.Corre = false;
-        }else{
+        } else {
             practica1s22015_201213225.Practica1s22015_201213225.Corre = true;
         }
         //System.out.println(practica1s22015_201213225.Practica1s22015_201213225.Corre);
     }//GEN-LAST:event_BtPausaActionPerformed
 
     private void BtGraficarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtGraficarActionPerformed
-        Graphviz Aux = new Graphviz(Tablero,0);
-        Aux = new Graphviz(Tablero,1);
+        Graphviz Aux = new Graphviz(Tablero, 0);
+        Aux = new Graphviz(Tablero, 1);
     }//GEN-LAST:event_BtGraficarActionPerformed
+
+    private void BtReiniciarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtReiniciarActionPerformed
+        practica1s22015_201213225.Practica1s22015_201213225.Corre = true;
+        Tablero Ventana = new Tablero(Original);
+        Ventana.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_BtReiniciarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -179,6 +209,8 @@ public class Tablero extends javax.swing.JFrame implements KeyListener {
     private javax.swing.JButton BtGraficar;
     private javax.swing.JToggleButton BtPausa;
     private javax.swing.JButton BtReiniciar;
+    private javax.swing.JLabel LbPuntos;
+    private javax.swing.JLabel LbVidas;
     // End of variables declaration//GEN-END:variables
 
     private Matriz Clone(Matriz Tablero) {
@@ -298,27 +330,27 @@ public class Tablero extends javax.swing.JFrame implements KeyListener {
     @Override
     public void keyPressed(KeyEvent e) {
         if (e.getKeyCode() == KeyEvent.VK_UP) {
-            if (!salto && Personaje.casilla.abajo!=null && !Personaje.VerificarCaida()) {
+            if (!salto && Personaje.casilla.abajo != null && !Personaje.VerificarCaida()) {
                 salto = true;
                 //System.out.println("Salto");
-            } else if (!doblesalto 
-                    && !derecha 
-                    && !izquierda 
-                    && Personaje.casilla.abajo.abajo!=null 
-                    && Personaje.casilla.abajo.abajo.Objeto!=null
-                    && (Personaje.casilla.abajo.abajo.Objeto.equals("Suelo")|| Personaje.casilla.abajo.abajo.Objeto.equals("Pared"))) {
+            } else if (!doblesalto
+                    && !derecha
+                    && !izquierda
+                    && Personaje.casilla.abajo.abajo != null
+                    && Personaje.casilla.abajo.abajo.Objeto != null
+                    && (Personaje.casilla.abajo.abajo.Objeto.equals("Suelo") || Personaje.casilla.abajo.abajo.Objeto.equals("Pared"))) {
                 doblesalto = true;
                 //System.out.println("DobleSalto");
             }
         } else if (e.getKeyCode() == KeyEvent.VK_LEFT && !doblesalto) {
             izquierda = true;
-            if(Personaje.VerificarIzqP()){
+            if (Personaje.VerificarIzqP()) {
                 Personaje.MoverIzquierdaP();
             }
             //System.out.println("Derecha");
         } else if (e.getKeyCode() == KeyEvent.VK_RIGHT && !doblesalto) {
             derecha = true;
-            if(Personaje.VerificarDerP()){
+            if (Personaje.VerificarDerP()) {
                 Personaje.MoverDerechaP();
             }
             //System.out.println("Izquierda");
@@ -334,6 +366,54 @@ public class Tablero extends javax.swing.JFrame implements KeyListener {
             izquierda = false;
         } else if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
             derecha = false;
+        }
+    }
+
+    @Override
+    public void run() {
+        if (Personaje != null) {
+            while (true) {
+                if (practica1s22015_201213225.Practica1s22015_201213225.Corre) {
+                    System.out.println("Corre");
+                    if (Personaje.PierdeVida) {
+                        vida--;
+                        LbVidas.setText("Vidas: " + vida);
+                        try {
+                            Thread.sleep(500);
+                        } catch (InterruptedException ex) {
+
+                        }
+                        if (vida == 0) {
+                            practica1s22015_201213225.Practica1s22015_201213225.Corre = true;
+                            JOptionPane.showMessageDialog(null, "Usted ha Perdido");
+                            Tablero Nuevo = new Tablero(Original);
+                            Thread hilo = new Thread(Nuevo);
+                            hilo.start();
+                            Nuevo.setVisible(true);
+                            this.dispose();
+                        }
+                        Personaje.PierdeVida = false;
+                    } else if (Personaje.GanaVida) {
+                        Personaje.GanaVida = false;
+                        vida++;
+                        LbVidas.setText("Vidas: " + vida);
+                    } else if (Personaje.GanaPuntos) {
+                        Personaje.GanaPuntos=false;
+                        puntos++;
+                        LbPuntos.setText("Puntos: " + puntos);
+                    } else if (Personaje.Finaliza) {
+                        Personaje.Finaliza = false;
+                        practica1s22015_201213225.Practica1s22015_201213225.Corre = true;
+                        JOptionPane.showMessageDialog(null, "Usted ha Ganado");
+                        Tablero Nuevo = new Tablero(Original);
+                        Thread hilo = new Thread(Nuevo);
+                        hilo.start();
+                        Nuevo.setVisible(true);
+                        this.dispose();
+
+                    }
+                }
+            }
         }
     }
 

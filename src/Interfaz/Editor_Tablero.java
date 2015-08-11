@@ -246,6 +246,8 @@ public class Editor_Tablero extends javax.swing.JFrame implements MouseListener 
         Tablero Tablero = new Tablero(this.Tablero);
         //Tablero.addKeyListener(Tablero);
         Tablero.setVisible(true);
+        Thread hilo = new Thread(Tablero);
+        hilo.start();
         this.dispose();
     }//GEN-LAST:event_BtSiguienteActionPerformed
 

@@ -5,8 +5,6 @@
  */
 package Estructuras;
 
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 
 /**
@@ -23,6 +21,7 @@ public class Nodo_Lista implements Runnable {
     public boolean MovIzq = true;
     public boolean running = false;
     public boolean salto = false;
+    public boolean PierdeVida = false, GanaVida = false, Finaliza = false, GanaPuntos = false;
 
     public Nodo_Lista(int indice, String nombre, String tipo, String ruta) {
         this.indice = indice;
@@ -49,6 +48,9 @@ public class Nodo_Lista implements Runnable {
                 if (caida && !salto) {
                     MoverAbajo();
                 }
+            }
+            if (tipo.equals("Principal")) {
+                verificar();
             }
 
         }
@@ -105,7 +107,7 @@ public class Nodo_Lista implements Runnable {
             MovIzq = true;
         }
     }
-    
+
     public void MoverIzquierdaP() {
         try {
             Thread.sleep(500);
@@ -186,11 +188,11 @@ public class Nodo_Lista implements Runnable {
         }
         return false;
     }
-    
+
     public boolean VerificarIzqP() {
         if (casilla.izquierda != null) {
             if (casilla.izquierda.Objeto != null) {
-                if(!casilla.izquierda.Objeto.tipo.equals("Goomba")&&!casilla.izquierda.Objeto.tipo.equals("Koopa")){
+                if (!casilla.izquierda.Objeto.tipo.equals("Goomba") && !casilla.izquierda.Objeto.tipo.equals("Koopa")) {
                     return false;
                 }
                 return true;
@@ -204,7 +206,7 @@ public class Nodo_Lista implements Runnable {
     public boolean VerificarDerP() {
         if (casilla.derecha != null) {
             if (casilla.derecha.Objeto != null) {
-                if(!casilla.derecha.Objeto.tipo.equals("Goomba")&&!casilla.izquierda.Objeto.tipo.equals("Koopa")){
+                if (!casilla.derecha.Objeto.tipo.equals("Goomba") && !casilla.izquierda.Objeto.tipo.equals("Koopa")) {
                     return false;
                 }
                 return true;
@@ -224,6 +226,25 @@ public class Nodo_Lista implements Runnable {
             casilla.setIcon(new ImageIcon(casilla.Item.ruta));
         } else {
             casilla.setIcon(null);
+        }
+    }
+
+    private void verificar() {
+        if (casilla.Objeto != null) {
+            PierdeVida = true;
+        }
+        if (casilla.Item != null) {
+            String Aux = casilla.Item.tipo;
+            //System.out.println(casilla.Item.tipo);
+            if (Aux.equals("Vida")) {
+                GanaVida = true;
+            } else if (Aux.equals("Castillo")) {
+                Finaliza = true;
+            } else {
+                GanaPuntos = true;
+            }
+            casilla.Item.casilla = null;
+            casilla.Item = null;
         }
     }
 }
